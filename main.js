@@ -31,10 +31,13 @@ const colors = [
   "#FF5733", // Light Coral
   "#33FFF3"  // Light Aqua
 ];
-const get_colors = () => {
+const get_random_number = (count) => {
   const shuffled_arr = colors.sort(() => 0.5 - Math.random());
-  return shuffled_arr.slice(0, 4);
+  return shuffled_arr.slice(0, count);
 }
+
+// let rand_colors = get_random_number(4);
+// console.log(rand_colors);
 
 let g1 = new Grid(1);
 let g2 = new Grid(2);
@@ -52,6 +55,16 @@ const eraser = document.getElementById('eraser');
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
 
 const button = document.getElementById('button-wrapper');
+
+g1.render(grid_element1);
+g2.render(grid_element2);
+
+
+let color_list = ['#689942', '#6D5995', '#00527A', '#E75480'];
+
+for (let i in color_circle_list) {
+  color_circle_list[i].style.backgroundColor = color_list[i];
+}
 
 let color = "ffffff";
 
@@ -74,6 +87,10 @@ function set_paintbrush(element, rgb) {
   color = b.join("");
   element.style.borderColor = "black";
 }
+
+color_circle_list.forEach(circ => {
+  circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
+});
 
 eraser.addEventListener("click", () => {
   color = "ffffff";
@@ -116,6 +133,7 @@ function activate_pixels() {
 }
 
 button.addEventListener('click', () => {
+  setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
   console.log('button clicked lolol');
   g1.randomizeGrid(color_list, 3);
   const pixels = Array.from(document.getElementsByClassName('1'));
@@ -127,30 +145,17 @@ button.addEventListener('click', () => {
 
 function run_game() {
   for (let i = 0; i < 5; i++) {
-    // Getting random colors from the our set colors
-    rand_colors = get_colors();
-    console.log("Random colors: ", rand_colors);
 
-    // Render both grids
-    g1.render(grid_element1);
-    // Beginning the timer for the reference grid to disappear
-    setTimeout(() => { grid_element1.style.display = 'none'; }, 5000);
-
-    setTimeout(() => {
-      g2.render(grid_element2);
-
-      // Setting the colors of the palette from random colors
-      for (let i in color_circle_list)
-        color_circle_list[i].style.backgroundColor = rand_colors[i];
-
-      // Adding event listeners 
-      color_circle_list.forEach(circ => {
-        circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
-      });
-      activate_pixels();
-    }, 10000);
-    g2.calcScore(g2);
   }
 }
+activate_pixels();
 
+function run_game() {
+  // 5 times, do:
+  // render both grids, first one being the reference
+  // Assign colors used to gen the reference in the palette
+  // Set the timer for 10 seconds ref goes away
+  // You have 15 to color out the palette
+  // Check score
+}
 
