@@ -84,8 +84,24 @@ h1 {
     background-size: cover;
 }
 
+.creator {
+    width: 350px;
+    margin: 0px 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .creator-wrapper {
     display: flex;
+    justify-content: center;
+    align-content: space-between;
+}
+
+#about-title {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0px;
 }
 /* .game-container {
     margin: 40px;
