@@ -18,7 +18,7 @@ export class Grid {
     this.grid = [];
 
     for (let i = 0; i < height; i++) {
-      let row = []
+      let row = [];
       for (let j = 0; j < width; j++) {
         row.push('ffffff');
       }
@@ -82,60 +82,60 @@ export class Grid {
     return total_score;
   }
 
-    /**
-     * Assigns colors to the grid randomly, with grouping_factor controlling how likely adjacent cells will have same color
-     * @param {number} colors colors to assign to the grid
-     * @param {number} grouping_factor value between 0 and Infinity both exclusive); higher values increase chance of adjacent cells being same number. 1 results in completely random.
-     */
-    randomizeGrid(colors, grouping_factor) {
-      const get_random_number = (min, max) => Math.random() * (max - min) + min;
-      function weighted_rng(items, weights) {
-        const cumulative_weights = weights.reduce((acc, w) => {
-          acc.push(acc[acc.length-1] + w);
-          return acc;
-        }, [0]).slice(1);
-        let idx = -1;
-        const random_num = get_random_number(0, cumulative_weights[items.length-1]);
-        while (++idx < items.length && cumulative_weights[idx] < random_num) { };
-        return items[idx];
-      }
+  /**
+   * Assigns colors to the grid randomly, with grouping_factor controlling how likely adjacent cells will have same color
+   * @param {number} colors colors to assign to the grid
+   * @param {number} grouping_factor value between 0 and Infinity both exclusive); higher values increase chance of adjacent cells being same number. 1 results in completely random.
+   */
+  randomizeGrid(colors, grouping_factor) {
+    const get_random_number = (min, max) => Math.random() * (max - min) + min;
+    function weighted_rng(items, weights) {
+      const cumulative_weights = weights.reduce((acc, w) => {
+        acc.push(acc[acc.length - 1] + w);
+        return acc;
+      }, [0]).slice(1);
+      let idx = -1;
+      const random_num = get_random_number(0, cumulative_weights[items.length - 1]);
+      while (++idx < items.length && cumulative_weights[idx] < random_num) { };
+      return items[idx];
+    }
 
-      const in_grid_range = (i, j) => {
-        return i >= 0 && i < this.height && j >= 0 && j < this.width;
-      }
+    const in_grid_range = (i, j) => {
+      return i >= 0 && i < this.height && j >= 0 && j < this.width;
+    }
 
-      const get_neighbors = (i, j) => {
-        const out = [1, -1].reduce((values, offset_height) => {
-          [1, -1].forEach(offset_width => {
-            if (in_grid_range(i + offset_height, j + offset_width) && this.grid[i + offset_height][j + offset_width] !== null) {
-              values.push(this.grid[i + offset_height][j + offset_width]);
-            }
-          });
-          return values;
-        }, []);
-        return out;
-      }
-
-      const clear_grid = () => {
-        for (let i = 0; i < this.height; i++) {
-          for (let j = 0; j < this.width; j++) {
-            this.grid[i][j] = null;
+    const get_neighbors = (i, j) => {
+      const out = [1, -1].reduce((values, offset_height) => {
+        [1, -1].forEach(offset_width => {
+          if (in_grid_range(i + offset_height, j + offset_width) && this.grid[i + offset_height][j + offset_width] !== null) {
+            values.push(this.grid[i + offset_height][j + offset_width]);
           }
-        }
-      }
+        });
+        return values;
+      }, []);
+      return out;
+    }
 
-      clear_grid();
-
-      for (let i = 0; i < this.height; i++) {
-        for (let j = 0; j < this.width; j++) {
-          const neighbors = get_neighbors(i, j);
-          const weights = {};
-          colors.forEach(c => weights[c] = 1);
-          neighbors.forEach(n => weights[`#${n}`] *= grouping_factor);
-          const weights_arr = Object.values(weights).map(w => Number.isNaN(w) ? 0 : w);
-          const random_color = weighted_rng(colors, weights_arr);
-          this.grid[i][j] = random_color.replace(/\W/g, '');
+    function clear_grid() {
+      for (const i = 0; i < this.grid.height; i++) {
+        for (const j = 0; j < this.grid.width; j++) {
+          this.grid[i][j] = 'ffffff';
         }
       }
     }
+
+    clear_grid();
+
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
+        const neighbors = get_neighbors(i, j);
+        const weights = {};
+        colors.forEach(c => weights[c] = 1);
+        neighbors.forEach(n => weights[`#${n}`] *= grouping_factor);
+        const weights_arr = Object.values(weights).map(w => Number.isNaN(w) ? 0 : w);
+        const random_color = weighted_rng(colors, weights_arr);
+        this.grid[i][j] = random_color.replace(/\W/g, '');
+      }
+    }
   }
+}
