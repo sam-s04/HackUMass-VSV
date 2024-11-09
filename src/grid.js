@@ -56,10 +56,11 @@ export class Grid {
     colorPixel(element, color){
       let pos = JSON.parse(element.classList[1]); // example class list: pixel [1,1] 2
       this.grid[pos[0]][pos[1]] = color;
-      element.innerHTML = `<style>
-        .\\[${pos[0]}\\,${pos[1]}\\] {
-          background-color: #${color};
-        }
-        </style>`;
+      element.style.backgroundColor = `#${color}`;
+      // element.innerHTML = `<style>
+      //   .\\[${pos[0]}\\,${pos[1]}\\] {
+      //     background-color: #${color};
+      //   }
+      //   </style>`;
     }
   }
