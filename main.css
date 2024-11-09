@@ -11,6 +11,10 @@ p {
     font-family: 'Raleway', monospace;
 }
 
+.title-card {
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
 .pixel {
     height: 40px;
     width: 40px;
