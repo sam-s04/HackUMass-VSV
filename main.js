@@ -30,10 +30,10 @@ for (let i in color_circle_list) {
   color_circle_list[i].style.backgroundColor = color_list[i];
 }
 
-let color = '#ffffff';
+let color = 'ffffff';
 
-function set_paintbrush(hex) {
-  var a = "rgb(255,255,255)".split("(")[1].split(")")[0];
+function set_paintbrush(rgb) {
+  var a = rgb.split("(")[1].split(")")[0];
 
   a = a.split(",");
 
@@ -43,15 +43,15 @@ function set_paintbrush(hex) {
   });
 
   color = b.join("");
+  console.log(color);
 }
 
 color_circle_list.forEach(circ => {
-  circ.addEventListener('click', set_paintbrush(circ.style.backgroundColor));
-  console.log(circ.style.backgroundColor)
+  circ.addEventListener("click", () => set_paintbrush(circ.style.backgroundColor));
 });
 
 eraser.addEventListener("click", () => {
-  set_paintbrush("#FFFFFF");
+  color = 'ffffff';
 });
 
 function paint_pixel(pixel) {
