@@ -22,7 +22,7 @@ let color_circle_list = Array.from(document.getElementsByClassName('color-circle
 g1.render(grid_element1);
 g2.render(grid_element2);
 
-setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
+// setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
 
 let color_list = ['#689942', '#6D5995', '#00527A', '#E75480']
 
