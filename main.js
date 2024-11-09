@@ -30,7 +30,7 @@ for (let i in color_circle_list) {
   color_circle_list[i].style.backgroundColor = color_list[i];
 }
 
-let color = null;
+let color = '#ffffff';
 
 function set_paintbrush(hex){
   color = hex;
