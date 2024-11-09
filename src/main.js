@@ -18,8 +18,8 @@ async function run() {
     const collection = database.collection(collectionName);
 }
 
-let g = new Grid()
+let g = new Grid();
 
-const grid_element = document.getElementById('grid1')
+const grid_element = document.getElementById('grid1');
 
 g.render(grid_element);
