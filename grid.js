@@ -14,6 +14,14 @@ export class Grid {
     this.grid = grid;
   }
 
+  clearGrid() {
+    for (const i = 0; i < this.grid.height; i++) {
+      for (const j = 0; j < this.grid.width; j++) {
+        this.grid[i][j] = 'ffffff';
+      }
+    }
+  }
+
   newGrid(height, width) {
     this.grid = [];
 
@@ -116,15 +124,7 @@ export class Grid {
       return out;
     }
 
-    const clear_grid = () => {
-      for (const i = 0; i < this.grid.height; i++) {
-        for (const j = 0; j < this.grid.width; j++) {
-          this.grid[i][j] = 'ffffff';
-        }
-      }
-    }
-
-    clear_grid();
+    this.clearGrid();
 
     for (let i = 0; i < this.height; i++) {
       for (let j = 0; j < this.width; j++) {
