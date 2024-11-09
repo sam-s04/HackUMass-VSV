@@ -20,7 +20,7 @@ export class Grid {
     for (let i = 0; i < height; i++) {
       let row = []
       for (let j = 0; j < width; j++) {
-        row.push(null);
+        row.push('ffffff');
       }
       this.grid.push(row);
     }
@@ -45,7 +45,7 @@ export class Grid {
     for (let i = 0; i < this.height; i++) {
       for (let j = 0; j < this.width; j++) {
         let new_pixel = document.createElement('div');
-        new_pixel.style.borderRadius = '5px';
+        new_pixel.style.borderRadius = '3px';
         new_pixel.classList.add('pixel');
         new_pixel.classList.add(`[${i},${j}]`);
         new_pixel.classList.add(`${this.id}`)
@@ -79,7 +79,7 @@ export class Grid {
     //   // if elem1.getComputedStyle().fill == elem2.getComputedStyle().fill
     //   // Score += 1
     // }
-    return total_score / (this.height * this.width);
+    return total_score;
   }
 
   /**

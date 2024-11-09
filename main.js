@@ -94,10 +94,12 @@ function activate_pixels() {
 }
 
 button.addEventListener('click', () => {
-
   setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
   console.log('button clicked lolol');
 })
 
+function run_game() {
+
+}
 activate_pixels();
 
