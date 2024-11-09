@@ -19,10 +19,11 @@ const eraser = document.getElementById('eraser');
 
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
 
+const button = docment.getElementById('button-wrapper');
+
 g1.render(grid_element1);
 g2.render(grid_element2);
 
-// setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
 
 let color_list = ['#689942', '#6D5995', '#00527A', '#E75480']
 
@@ -86,4 +87,10 @@ function activate_pixels() {
   });
 }
 
+button.addEventListener('click', () => {
+  // setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
+  console.log('button clicked lolol');
+})
+
 activate_pixels();
+
