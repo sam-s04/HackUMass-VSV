@@ -19,7 +19,7 @@ const eraser = document.getElementById('eraser');
 
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
 
-const button = docment.getElementById('button-wrapper');
+const button = document.getElementById('button-wrapper');
 
 g1.render(grid_element1);
 g2.render(grid_element2);
