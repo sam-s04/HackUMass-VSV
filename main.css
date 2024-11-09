@@ -11,8 +11,13 @@ p {
     font-family: 'Raleway', monospace;
 }
 
-.title-card {
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+h1 {
+    font-size: 2em;
+}
+
+.intro-section {
+
+    box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.5);
 }
 
 .pixel {
