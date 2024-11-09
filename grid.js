@@ -116,7 +116,7 @@ export class Grid {
       return out;
     }
 
-    function clear_grid() {
+    const clear_grid = () => {
       for (const i = 0; i < this.grid.height; i++) {
         for (const j = 0; j < this.grid.width; j++) {
           this.grid[i][j] = 'ffffff';

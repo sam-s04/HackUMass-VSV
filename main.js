@@ -143,11 +143,6 @@ button.addEventListener('click', () => {
   });
 })
 
-function run_game() {
-  for (let i = 0; i < 5; i++) {
-
-  }
-}
 activate_pixels();
 
 function run_game() {
