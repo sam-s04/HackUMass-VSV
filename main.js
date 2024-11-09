@@ -30,11 +30,19 @@ for (let i in color_circle_list) {
   color_circle_list[i].style.backgroundColor = color_list[i];
 }
 
-let color = null;
+let color = '#ffffff';
 
-function set_paintbrush(hex){
-  color = hex;
-  color = color.replace('#', '');
+function set_paintbrush(hex) {
+  var a = "rgb(255,255,255)".split("(")[1].split(")")[0];
+
+  a = a.split(",");
+
+  var b = a.map(x => {             //For each array element
+    x = parseInt(x).toString(16);      //Convert to a base16 string
+    return (x.length == 1) ? "0" + x : x;  //Add zero if we get only one character
+  });
+
+  color = b;
 }
 
 color_circle_list.forEach(circ => {
