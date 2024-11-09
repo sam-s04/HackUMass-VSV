@@ -39,28 +39,23 @@ export class Grid {
           margin-bottom: 3em;
         }
         </style>`;
-
-    for (let i = 0; i < height; i++) {
-      for (let j = 0; j < width; j++) {
-        let new_pixel = document.createElement('div');
-        new_pixel.classList.add('pixel');
-        new_pixel.classList.add(`[${i},${j}]`);
-        new_pixel.classList.add(`${this.id}`)
-        let color = this.grid[i][j];
-        this.colorPixel(new_pixel, color);
-        element.appendChild(new_pixel);
+  
+      for(let i = 0; i < height; i++){
+        for(let j = 0; j < width; j++){
+          let new_pixel = document.createElement('div');
+          new_pixel.classList.add('pixel');
+          new_pixel.classList.add(`[${i},${j}]`);
+          new_pixel.classList.add(`${this.id}`)
+          let color = this.grid[i][j];
+          this.colorPixel(new_pixel, color);
+          element.appendChild(new_pixel);
+        }
       }
     }
+  
+    colorPixel(element, color){
+      let pos = JSON.parse(element.classList[1]); // example class list: pixel [1,1] 2
+      this.grid[pos[0]][pos[1]] = color;
+      element.style.backgroundColor = `#${color}`;
+    }
   }
-
-  colorPixel(element, color) {
-    let pos = JSON.parse(element.classList[1]); // example class list: pixel [1,1] 2
-    this.grid[pos[0]][pos[1]] = color;
-    element.style.backgroundColor = `#${color}`;
-    // element.innerHTML = `<style>
-    //   .\\[${pos[0]}\\,${pos[1]}\\] {
-    //     background-color: #${color};
-    //   }
-    //   </style>`;
-  }
-}
