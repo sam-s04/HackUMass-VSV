@@ -20,7 +20,7 @@ export class Grid {
     for (let i = 0; i < height; i++) {
       let row = []
       for (let j = 0; j < width; j++) {
-        row.push("#FFFFFF");
+        row.push('ffffff');
       }
       this.grid.push(row);
     }
@@ -41,38 +41,46 @@ export class Grid {
           margin-bottom: 3em;
         }
         </style>`;
-  
-      for(let i = 0; i < this.height; i++){
-        for(let j = 0; j < this.width; j++){
-          let new_pixel = document.createElement('div');
-          new_pixel.classList.add('pixel');
-          new_pixel.classList.add(`[${i},${j}]`);
-          new_pixel.classList.add(`${this.id}`)
-          let color = this.grid[i][j];
-          this.colorPixel(new_pixel, color);
-          element.appendChild(new_pixel);
-        }
+
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
+        let new_pixel = document.createElement('div');
+        new_pixel.style.borderRadius = '3px';
+        new_pixel.classList.add('pixel');
+        new_pixel.classList.add(`[${i},${j}]`);
+        new_pixel.classList.add(`${this.id}`)
+        let color = this.grid[i][j];
+        this.colorPixel(new_pixel, color);
+        element.appendChild(new_pixel);
       }
     }
-  
-    colorPixel(element, color){
-      let pos = JSON.parse(element.classList[1]); // example class list: pixel [1,1] 2
-      this.grid[pos[0]][pos[1]] = color;
-      element.style.backgroundColor = `#${color}`;
-    }
+  }
 
-    calcScore(reference_grid) {
-      correct_grid = reference_grid.getGrid();
-      total_score = 0;
-      const pts_per_correct = 1
-      const compare_colors = (c1, c2) => c1 === c2 ? pts_per_correct : 0;
-      total_score = this.grid.reduce((score, row, i) => {
-        return row.reduce(
-          (row_score, curr_color, j) => row_score + compare_colors(curr_color, correct_grid[i][j]), score
-        );
-      }, 0)
-      return total_score / (this.height * this.width);
-    }
+  colorPixel(element, color) {
+    let pos = JSON.parse(element.classList[1]); // example class list: pixel [1,1] 2
+    this.grid[pos[0]][pos[1]] = color;
+    element.style.backgroundColor = `#${color}`;
+  }
+
+  calcScore(reference_grid) {
+    correct_grid = reference_grid.getGrid();
+    total_score = 0;
+    const pts_per_correct = 1
+    const compare_colors = (c1, c2) => c1 === c2 ? pts_per_correct : 0;
+    total_score = this.grid.reduce((score, row, i) => {
+      return row.reduce(
+        (row_score, curr_color, j) => row_score + compare_colors(curr_color, correct_grid[i][j]), score
+      );
+    }, 0)
+    // for (i = 0; i < user_ans.length; i++) {
+    //   // Get element by ID and compare colors
+    //   elem1 = html.getElementById();
+    //   elem2 = html.getElementById();
+    //   // if elem1.getComputedStyle().fill == elem2.getComputedStyle().fill
+    //   // Score += 1
+    // }
+    return total_score;
+  }
 
     /**
      * Assigns colors to the grid randomly, with grouping_factor controlling how likely adjacent cells will have same color

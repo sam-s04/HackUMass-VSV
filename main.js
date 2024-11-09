@@ -11,10 +11,6 @@ g2.newGrid(5, 5);
 const grid_element1 = document.getElementById('grid1');
 const grid_element2 = document.getElementById('grid2');
 
-const color_circle1 = document.getElementById('color1');
-const color_circle2 = document.getElementById('color2');
-const color_circle3 = document.getElementById('color3');
-const color_circle4 = document.getElementById('color4');
 const eraser = document.getElementById('eraser');
 
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
@@ -31,9 +27,15 @@ for (let i in color_circle_list) {
   color_circle_list[i].style.backgroundColor = color_list[i];
 }
 
-let color = 'ffffff';
+let color = "ffffff";
 
-function set_paintbrush(rgb) {
+function set_paintbrush(element, rgb) {
+  color_circle_list.forEach(circ => {
+    circ.style.borderColor = "white";
+  });
+
+  eraser.style.borderColor = "white";
+
   var a = rgb.split("(")[1].split(")")[0];
 
   a = a.split(",");
@@ -44,15 +46,19 @@ function set_paintbrush(rgb) {
   });
 
   color = b.join("");
-  console.log(color);
+  element.style.borderColor = "black";
 }
 
 color_circle_list.forEach(circ => {
-  circ.addEventListener("click", () => set_paintbrush(circ.style.backgroundColor));
+  circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
 });
 
 eraser.addEventListener("click", () => {
-  color = 'ffffff';
+  color = "ffffff";
+  color_circle_list.forEach(circ => {
+    circ.style.borderColor = "white";
+  });
+  eraser.style.borderColor = "black";
 });
 
 function paint_pixel(pixel) {
@@ -88,8 +94,7 @@ function activate_pixels() {
 }
 
 button.addEventListener('click', () => {
-
-  // setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
+  setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
   console.log('button clicked lolol');
   g1.randomizeGrid(color_list, 2);
   const pixels = Array.from(document.getElementsByClassName('1'));
@@ -99,5 +104,8 @@ button.addEventListener('click', () => {
   });
 })
 
+function run_game() {
+
+}
 activate_pixels();
 
