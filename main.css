@@ -35,3 +35,27 @@ h1 {
     border-radius: 50%;
     display: inline-block;
 }
+
+#eraser {
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    border: 3px solid black;
+    border-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    background-image: url("eraser.png");
+    background-position: center;
+    background-size: 85%;
+}
+/* .game-container {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    .game-container {
+        flex-direction: row;
+    }
+} */
