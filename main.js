@@ -42,7 +42,7 @@ function set_paintbrush(hex) {
     return (x.length == 1) ? "0" + x : x;  //Add zero if we get only one character
   });
 
-  color = b;
+  color = b.join("");
 }
 
 color_circle_list.forEach(circ => {
