@@ -1,4 +1,4 @@
-import { Grid } from './grid.js';
+import { Grid } from './src/grid.js';
 
 let g = new Grid()
 g.newGrid(5, 5)
