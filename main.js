@@ -25,7 +25,7 @@ g1.render(grid_element1);
 g2.render(grid_element2);
 
 
-let color_list = ['#689942', '#6D5995', '#00527A', '#E75480']
+let color_list = ['#689942', '#6D5995', '#00527A', '#E75480'];
 
 for (let i in color_circle_list) {
   color_circle_list[i].style.backgroundColor = color_list[i];
@@ -88,6 +88,7 @@ function activate_pixels() {
 }
 
 button.addEventListener('click', () => {
+
   // setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
   console.log('button clicked lolol');
 })
