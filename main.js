@@ -1,4 +1,4 @@
-import { Grid } from './src/grid.js';
+import { Grid } from './grid.js';
 
 let g1 = new Grid(1);
 let g2 = new Grid(2);

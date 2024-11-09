@@ -1,5 +1,4 @@
 const { MongoClient } = require("mongodb");
-import { Grid } from './grid'
 
 async function run() {
     const uri =
@@ -11,15 +10,9 @@ async function run() {
 
     await client.connect();
 
-    const dbName = "myDatabase";
-    const collectionName = "recipes";
+    const dbName = "Leaderboard";
+    const collectionName = "Leaderboard";
 
     const database = client.db(dbName);
     const collection = database.collection(collectionName);
 }
-
-let g = new Grid();
-
-const grid_element = document.getElementById('grid1');
-
-g.render(grid_element);
