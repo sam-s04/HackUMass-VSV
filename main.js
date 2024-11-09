@@ -3,7 +3,9 @@ import { Grid } from './grid.js';
 let g1 = new Grid(1);
 let g2 = new Grid(2);
 
+// Reference image, must disappear in a bit
 g1.newGrid(5, 5);
+// User paint image
 g2.newGrid(5, 5);
 
 const grid_element1 = document.getElementById('grid1');
@@ -23,9 +25,11 @@ color_circle_list.push(color_circle4);
 g1.render(grid_element1);
 g2.render(grid_element2);
 
+setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
+
 let color_list = ['#689942', '#6D5995', '#00527A', '#E75480']
 
-for(let i in color_circle_list){
+for (let i in color_circle_list) {
   color_circle_list[i].style.backgroundColor = color_list[i];
 }
 
