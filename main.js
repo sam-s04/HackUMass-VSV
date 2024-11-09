@@ -29,9 +29,19 @@ for (let i in color_circle_list) {
   color_circle_list[i].style.backgroundColor = color_list[i];
 }
 
-function paint_pixel(pixel) {
-  let color = document.getElementById('paintbrush').value;
+let color = null;
+
+function set_paintbrush(hex){
+  color = hex;
   color = color.replace('#', '');
+}
+
+color_circle_list.forEach(circ => {
+  circ.addEventListener('click', set_paintbrush(circ.style.backgroundColor));
+  console.log(circ.style.backgroundColor)
+});
+
+function paint_pixel(pixel) {
   g2.colorPixel(pixel, color);
 }
 
