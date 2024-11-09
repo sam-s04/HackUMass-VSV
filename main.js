@@ -96,7 +96,7 @@ function activate_pixels() {
 button.addEventListener('click', () => {
   setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
   console.log('button clicked lolol');
-  g1.randomizeGrid(color_list, 2);
+  g1.randomizeGrid(color_list, 3);
   const pixels = Array.from(document.getElementsByClassName('1'));
   pixels.forEach(pixel => {
     const coord = JSON.parse(pixel.classList[1]);
