@@ -31,10 +31,10 @@ const colors = [
   "#FF5733", // Light Coral
   "#33FFF3"  // Light Aqua
 ];
-const get_random_number = (count) => {
-  const shuffled_arr = colors.sort(() => 0.5 - Math.random());
-  return shuffled_arr.slice(0, count);
-}
+// const get_random_number = (count) => {
+//   const shuffled_arr = colors.sort(() => 0.5 - Math.random());
+//   return shuffled_arr.slice(0, count);
+// }
 
 // let rand_colors = get_random_number(4);
 // console.log(rand_colors);
@@ -133,7 +133,6 @@ function activate_pixels() {
 }
 
 button.addEventListener('click', () => {
-  setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
   console.log('button clicked lolol');
   g1.randomizeGrid(color_list, 3);
   const pixels = Array.from(document.getElementsByClassName('1'));
@@ -141,16 +140,17 @@ button.addEventListener('click', () => {
     const coord = JSON.parse(pixel.classList[1]);
     g1.colorPixel(pixel, g1.getGrid()[coord[0]][coord[1]]);
   });
+  setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
 })
 
 activate_pixels();
 
-function run_game() {
-  // 5 times, do:
-  // render both grids, first one being the reference
-  // Assign colors used to gen the reference in the palette
-  // Set the timer for 10 seconds ref goes away
-  // You have 15 to color out the palette
-  // Check score
-}
+// function run_game() {
+// 5 times, do:
+// render both grids, first one being the reference
+// Assign colors used to gen the reference in the palette
+// Set the timer for 10 seconds ref goes away
+// You have 15 to color out the palette
+// Check score
+// }
 
