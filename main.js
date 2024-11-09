@@ -148,7 +148,7 @@ function run_game() {
         circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
       });
       activate_pixels();
-    });
+    }, 10000);
     g2.calcScore(g2);
   }
 }
