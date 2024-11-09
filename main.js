@@ -34,7 +34,15 @@ function activate_pixels() {
   });
 
   grid_element2.addEventListener("mouseup", () => {
-    pixels.forEach((pixel, idx) => pixel.removeEventListener("mouseover", pixel_event_funcs[idx]));
+    pixels.forEach((pixel, idx) => {
+      pixel.removeEventListener("mouseover", pixel_event_funcs[idx])
+    });
+  });
+
+  grid_element2.addEventListener("mouseleave", () => {
+    pixels.forEach((pixel, idx) => {
+      pixel.removeEventListener("mouseover", pixel_event_funcs[idx])
+    });
   });
 }
 
