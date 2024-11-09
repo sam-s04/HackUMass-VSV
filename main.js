@@ -19,10 +19,11 @@ const eraser = document.getElementById('eraser');
 
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
 
+const button = docment.getElementById('button-wrapper');
+
 g1.render(grid_element1);
 g2.render(grid_element2);
 
-// setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
 
 let color_list = ['#689942', '#6D5995', '#00527A', '#E75480']
 
@@ -30,10 +31,10 @@ for (let i in color_circle_list) {
   color_circle_list[i].style.backgroundColor = color_list[i];
 }
 
-let color = '#ffffff';
+let color = 'ffffff';
 
-function set_paintbrush(hex) {
-  var a = "rgb(255,255,255)".split("(")[1].split(")")[0];
+function set_paintbrush(rgb) {
+  var a = rgb.split("(")[1].split(")")[0];
 
   a = a.split(",");
 
@@ -43,15 +44,15 @@ function set_paintbrush(hex) {
   });
 
   color = b.join("");
+  console.log(color);
 }
 
 color_circle_list.forEach(circ => {
-  circ.addEventListener('click', set_paintbrush(circ.style.backgroundColor));
-  console.log(circ.style.backgroundColor)
+  circ.addEventListener("click", () => set_paintbrush(circ.style.backgroundColor));
 });
 
 eraser.addEventListener("click", () => {
-  set_paintbrush("#FFFFFF");
+  color = 'ffffff';
 });
 
 function paint_pixel(pixel) {
@@ -86,4 +87,10 @@ function activate_pixels() {
   });
 }
 
+button.addEventListener('click', () => {
+  // setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
+  console.log('button clicked lolol');
+})
+
 activate_pixels();
+
