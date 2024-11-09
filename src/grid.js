@@ -1,6 +1,7 @@
 export class Grid {
-    constructor(){
-      this.grid = []
+    constructor(id){
+      this.grid = [];
+      this.id = id;
     }
   
     getGrid(){
@@ -43,8 +44,8 @@ export class Grid {
         for(let j = 0; j < width; j++){
           let new_pixel = document.createElement('div');
           new_pixel.classList.add('pixel');
-          new_pixel.classList.add('standard');
           new_pixel.classList.add(`[${i},${j}]`);
+          new_pixel.classList.add(`${this.id}`)
           let color = this.grid[i][j];
           this.colorPixel(new_pixel, color);
           element.appendChild(new_pixel);
@@ -53,7 +54,7 @@ export class Grid {
     }
   
     colorPixel(element, color){
-      let pos = JSON.parse(element.classList[2]); // example class list: pixel standard [1,1]
+      let pos = JSON.parse(element.classList[1]); // example class list: pixel [1,1] 2
       this.grid[pos[0]][pos[1]] = color;
       element.innerHTML = `<style>
         .\\[${pos[0]}\\,${pos[1]}\\] {
