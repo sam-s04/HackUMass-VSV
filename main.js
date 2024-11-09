@@ -134,19 +134,21 @@ function run_game() {
     // Render both grids
     g1.render(grid_element1);
     // Beginning the timer for the reference grid to disappear
-    setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
+    setTimeout(() => { grid_element1.style.display = 'none'; }, 5000);
 
-    g2.render(grid_element2);
+    setTimeout(() => {
+      g2.render(grid_element2);
 
-    // Setting the colors of the palette from random colors
-    for (let i in color_circle_list)
-      color_circle_list[i].style.backgroundColor = rand_colors[i];
+      // Setting the colors of the palette from random colors
+      for (let i in color_circle_list)
+        color_circle_list[i].style.backgroundColor = rand_colors[i];
 
-    // Adding event listeners 
-    color_circle_list.forEach(circ => {
-      circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
+      // Adding event listeners 
+      color_circle_list.forEach(circ => {
+        circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
+      });
+      activate_pixels();
     });
-    activate_pixels();
   }
 }
 
