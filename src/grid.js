@@ -43,12 +43,7 @@ export class Grid {
         for(let j = 0; j < width; j++){
           let new_pixel = document.createElement('div');
           new_pixel.classList.add('pixel');
-          if(height <= 15 && width <= 15){
-            new_pixel.classList.add('standard');
-          }
-          else{
-            new_pixel.classList.add('small');
-          }
+          new_pixel.classList.add('standard');
           new_pixel.classList.add(`[${i},${j}]`);
           let color = this.grid[i][j];
           this.colorPixel(new_pixel, color);
