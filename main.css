@@ -29,7 +29,8 @@ h1 {
 .color-palette {
     display: flex;
     justify-content: center;
-    padding: 0px 0px 10px 13px
+    padding: 0px 0px 10px 13px;
+    gap: 5px;
 }
 
 .color-circle {
