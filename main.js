@@ -15,6 +15,7 @@ const color_circle1 = document.getElementById('color1');
 const color_circle2 = document.getElementById('color2');
 const color_circle3 = document.getElementById('color3');
 const color_circle4 = document.getElementById('color4');
+const eraser = document.getElementById('eraser');
 
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
 
@@ -39,6 +40,10 @@ function set_paintbrush(hex){
 color_circle_list.forEach(circ => {
   circ.addEventListener('click', set_paintbrush(circ.style.backgroundColor));
   console.log(circ.style.backgroundColor)
+});
+
+eraser.addEventListener("click", () => {
+  set_paintbrush("#FFFFFF");
 });
 
 function paint_pixel(pixel) {
