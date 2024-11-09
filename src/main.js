@@ -23,8 +23,8 @@ async function run() {
 }
 run().catch(console.dir);
 
-// let g = new Grid()
+let g = new Grid()
 
-// const grid_element = document.getElementById('grid1')
+const grid_element = document.getElementById('grid1')
 
-// g.render(grid_element)
+g.render(grid_element)
