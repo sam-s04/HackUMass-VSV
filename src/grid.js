@@ -27,9 +27,9 @@ export class Grid {
       element.innerHTML = '';
       let height = this.grid.length;
       let width = this.grid[0].length;
-      let scale = 20;
+      let scale = 40;
       element.innerHTML = `<style id="style">
-        #grid {
+        .grid-class {
           display: grid;
           margin: auto;
           grid-template-columns: repeat(${width}, auto);
