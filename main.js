@@ -91,6 +91,12 @@ button.addEventListener('click', () => {
 
   // setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
   console.log('button clicked lolol');
+  g1.randomizeGrid(color_list, 2);
+  const pixels = Array.from(document.getElementsByClassName('1'));
+  pixels.forEach(pixel => {
+    const coord = JSON.parse(pixel.classList[1]);
+    g1.colorPixel(pixel, g1.getGrid()[coord[0]][coord[1]]);
+  });
 })
 
 activate_pixels();
