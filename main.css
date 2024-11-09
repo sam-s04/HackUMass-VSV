@@ -63,6 +63,30 @@ h1 {
 	-webkit-app-region: no-drag;
 	cursor: default;
 }
+
+#img-vin {
+    background-image: url("./Bio_Image_Vin_1.jpg");
+}
+
+#img-sam {
+    background-image: none;
+}
+
+#img-vic {
+    background-image: url("./old_victor.jpg");
+}
+
+.creator-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+}
+
+.creator-wrapper {
+    display: flex;
+}
 /* .game-container {
     margin: 40px;
     display: flex;
