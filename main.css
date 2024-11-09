@@ -1,5 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+h1,
+h2,
+h3 {
+    font-family: 'Arvo', sans-serif
+}
+
+p {
+    font-family: 'Raleway', monospace;
+}
+
 .pixel {
-height: 40px;
-width: 40px;
-border: 1px solid black;
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
 }
