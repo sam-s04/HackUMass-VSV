@@ -20,3 +20,13 @@ p {
     width: 40px;
     border: 1px solid black;
 }
+
+.color-circle {
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    border: 1px solid black;
+    border-color: black;
+    border-radius: 50%;
+    display: inline-block;
+}
