@@ -149,6 +149,7 @@ function run_game() {
       });
       activate_pixels();
     });
+    g2.calcScore(g2);
   }
 }
 
