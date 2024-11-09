@@ -1,0 +1,11 @@
+{
+  "name": "hackumass-vsv",
+  "version": "1.0.0",
+  "description": "Vin Sam Victor!!!!!!!!!!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
