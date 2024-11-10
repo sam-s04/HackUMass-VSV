@@ -1,18 +1,14 @@
 import { Grid } from './grid.js';
 const colors = [
   "#FF5733", // Orange Red
-  "#33FF57", // Lime Green
   "#3357FF", // Royal Blue
-  "#FF33A5", // Hot Pink
-  "#33FFF3", // Aqua
+  "#E75480", // Pink
   "#FFC300", // Bright Yellow
   "#581845", // Dark Purple
   "#900C3F", // Burgundy
   "#C70039", // Crimson
   "#DAF7A6", // Light Green
   "#FF5733", // Coral
-  "#33FFCE", // Mint Green
-  "#FF5733", // Fiery Orange
   "#85C1E9", // Sky Blue
   "#A3E4D7", // Turquoise
   "#F4D03F", // Golden
@@ -21,7 +17,7 @@ const colors = [
   "#48C9B0", // Teal
   "#F1948A", // Light Salmon
   "#F5B041", // Light Orange
-  "#52BE80", // Green
+  "#689942", // Green
   "#EB984E", // Burnt Orange
   "#A569BD", // Medium Purple
   "#5499C7", // Light Royal Blue
@@ -29,15 +25,16 @@ const colors = [
   "#F4D03F", // Light Goldenrod
   "#85C1E9", // Light Blue Sky
   "#FF5733", // Light Coral
-  "#33FFF3"  // Light Aqua
+  "#00527A", // Dark Blue
 ];
-// const get_random_number = (count) => {
-//   const shuffled_arr = colors.sort(() => 0.5 - Math.random());
-//   return shuffled_arr.slice(0, count);
-// }
 
-// let rand_colors = get_random_number(4);
-// console.log(rand_colors);
+const get_random_number = (count) => {
+  const shuffled_arr = colors.sort(() => 0.5 - Math.random());
+  return shuffled_arr.slice(0, count);
+}
+
+let color_list = get_random_number(4);
+console.log(color_list);
 
 let g1 = new Grid(1);
 let g2 = new Grid(2);
@@ -53,6 +50,7 @@ const grid_element2 = document.getElementById('grid2');
 const eraser = document.getElementById('eraser');
 
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
+console.log(color_circle_list);
 
 const button = document.getElementById('button-wrapper');
 
@@ -60,9 +58,8 @@ g1.render(grid_element1);
 g2.render(grid_element2);
 
 
-let color_list = ['#689942', '#6D5995', '#00527A', '#E75480'];
-
 for (let i in color_circle_list) {
+  console.log(color_list[i])
   color_circle_list[i].style.backgroundColor = color_list[i];
 }
 
@@ -141,12 +138,12 @@ button.addEventListener('click', () => {
 
 activate_pixels();
 
-// function run_game() {
-// 5 times, do:
-// render both grids, first one being the reference
-// Assign colors used to gen the reference in the palette
-// Set the timer for 10 seconds ref goes away
-// You have 15 to color out the palette
-// Check score
-// }
+function run_game() {
+  // 5 times, do:
+  // render both grids, first one being the reference
+  // Assign colors used to gen the reference in the palette
+  // Set the timer for 10 seconds ref goes away
+  // You have 15 to color out the palette
+  // Check score
+}
 
