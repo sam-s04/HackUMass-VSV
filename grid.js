@@ -38,7 +38,7 @@ export class Grid {
 
   setup(element) {
     element.innerHTML = '';
-    let scale = 40;
+    let scale = 50;
     element.style.height = `${this.height * scale}px`;
     element.style.width = `${this.width * scale}px`;
     element.style.gridTemplateColumns = `repeat(${this.width}, auto)`;

@@ -149,9 +149,10 @@ function run_game() {
   activate_pixels();
 
   setTimeout(() => { 
-    g1.clearGrid(); 
+    g1.clearGrid();
+    console.log(g1);
     g1.updateGrid(); 
-  }, 10000);
+  }, 100);
 }
 
 button.addEventListener('click', () => {
