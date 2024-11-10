@@ -136,7 +136,8 @@ async function run_game() {
   // You have 15 to color out the palette
   // Check score
 
-  button.style.visibility = 'hidden';
+  button.style.display = 'none';
+  input.style.display = 'none';
   // Reference image, must disappear in a bit
   g1.newGrid(5, 5);
   // User paint image
