@@ -136,7 +136,7 @@ async function run_game() {
     color_list = get_random_number(4);
     // Reference image, must disappear in a bit
     g1.newGrid(5, 5);
-    const copyGrid = g1.grid.map(row => row.map(x => x));
+    const copyGrid = g1.getGrid().map(row => row.map(x => x));
     // User paint image
     g2.newGrid(5, 5);
 
