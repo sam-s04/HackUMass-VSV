@@ -102,14 +102,13 @@ function activate_pixels() {
 }
 
 function generatePermutation(n) {
-  const arr = 
-  Array.from({ length: n + 1 }, (_, i) => i);
-  
+  let temp = 0;
+  const arr = Array(n).fill(1).map(x => (temp += x) - 1);
+  // fisher yates
   for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+      [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  
   return arr;
 }
 
