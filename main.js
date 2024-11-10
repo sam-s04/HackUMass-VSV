@@ -1,5 +1,5 @@
 import { Grid } from './grid.js';
-import { saveScore, loadScore, editScore, deleteScore } from './db.js'
+// import { saveScore, loadScore, editScore, deleteScore } from './db.js'
 
 const colors = [
   "#3357FF", // Royal Blue
@@ -138,6 +138,8 @@ async function run_game() {
 
   button.style.display = 'none';
   input.style.display = 'none';
+  button.style.visibility = 'hidden';
+  document.getElementById('score').innerHTML = "<h2>Score: 0 </h2>";
   // Reference image, must disappear in a bit
   g1.newGrid(5, 5);
   // User paint image
@@ -176,11 +178,8 @@ async function run_game() {
     let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
     await unviewable;
     total_score += g1.calcScore(copyGrid);
+    document.getElementById('score').innerHTML = `<h2>Score: ${total_score}</h2>`;
   }
-  let elem = document.createElement('div');
-  elem.innerHTML = `Total score: ${total_score}`;
-  elem.classList.append('score-wrapper')
-  document.getElementById('right-half').appendChild(elem);
 }
 
 function setup_palette() {
