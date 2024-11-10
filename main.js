@@ -1,9 +1,6 @@
 import { Grid } from './grid.js';
 import { leaderboard } from './leaderboard.js'
 
-for (let name_score of leaderboard.loadScores()) {
-
-}
 const colors = [
   "#3357ff", // Royal Blue
   "#e75480", // Pink
