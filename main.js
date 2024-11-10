@@ -45,7 +45,6 @@ g2.setup(grid_element2);
 const eraser = document.getElementById('eraser');
 
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
-console.log(color_circle_list);
 
 let color = "ffffff";
 
@@ -103,7 +102,7 @@ function activate_pixels() {
   });
 }
 
-function run_game() {
+async function run_game() {
   // 5 times, do:
   // render both grids, first one being the reference
   // Assign colors used to gen the reference in the palette
@@ -111,7 +110,6 @@ function run_game() {
   // You have 15 to color out the palette
   // Check score
 
-  color_list = get_random_number(4);
   button.style.visibility = 'hidden';
   // Reference image, must disappear in a bit
   g1.newGrid(5, 5);
@@ -141,18 +139,35 @@ function run_game() {
     eraser.style.borderColor = "black";
   });
 
-  activate_pixels();
+  for(let i=0; i<5; i++){
+    color_list = get_random_number(4);
+    // Reference image, must disappear in a bit
+    g1.newGrid(5, 5);
+    // User paint image
+    g2.newGrid(5, 5);
 
-  setTimeout(() => { 
+    g1.randomizeGrid(color_list, 2);
+    g1.updateGrid();
+    g2.updateGrid();
+    g1.setup(grid_element1);
+    g2.setup(grid_element2);
+
+    for (let i in color_circle_list) {
+      color_circle_list[i].style.backgroundColor = color_list[i];
+    }
+
+    activate_pixels();
+
+    let viewable = new Promise(resolve => setTimeout(resolve, 10000)); // time the painting is visible
+    await viewable;
     g1.clearGrid();
     g1.updateGrid();
-  }, 10000);
-  setTimeout(() => {
-
-  })
+    
+    let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
+    await unviewable;
+  }
 }
 
 button.addEventListener('click', () => {
   run_game();
-  setTimeout(() => {run_game()}, 15000);
 })
