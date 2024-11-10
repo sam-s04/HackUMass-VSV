@@ -64,6 +64,14 @@ export class Grid {
     }
   }
 
+  updateGrid() {
+    const pixels = Array.from(document.getElementsByClassName('1'));
+    pixels.forEach(pixel => {
+      const pos = JSON.parse(pixel.classList[1]);
+      this.colorPixel(pixel, this.grid[pos[0]][pos[1]]);
+    });
+  }
+
   colorPixel(element, color) {
     let pos = JSON.parse(element.classList[1]); // example class list: pixel [1,1] 2
     this.grid[pos[0]][pos[1]] = color;
