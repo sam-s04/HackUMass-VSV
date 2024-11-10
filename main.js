@@ -34,6 +34,14 @@ let g2 = new Grid(2);
 const grid_element1 = document.getElementById('grid1');
 const grid_element2 = document.getElementById('grid2');
 
+// Reference image, must disappear in a bit
+g1.newGrid(5, 5);
+// User paint image
+g2.newGrid(5, 5);
+
+g1.render(grid_element1);
+g2.render(grid_element2);
+
 const eraser = document.getElementById('eraser');
 
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
@@ -108,12 +116,16 @@ function run_game() {
   // Set the timer for 10 seconds ref goes away
   // You have 15 to color out the palette
   // Check score
+
+  color_list = get_random_number(4);
   button.style.visibility = 'hidden';
   // Reference image, must disappear in a bit
   g1.newGrid(5, 5);
   // User paint image
   g2.newGrid(5, 5);
 
+  g1.randomizeGrid(color_list, 2);
+  g1.updateGrid();
   g1.setup(grid_element1);
   g2.setup(grid_element2);
 
@@ -134,8 +146,12 @@ function run_game() {
     eraser.style.borderColor = "black";
   });
 
+  setTimeout(() => { grid_element1.clearGrid(); }, 10000);
+
   activate_pixels();
 }
 
-run_game();
-
+button.addEventListener('click', () => {
+  run_game();
+  setTimeout(() => { run_game(); }, 15000);
+})
