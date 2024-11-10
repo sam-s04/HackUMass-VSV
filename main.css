@@ -1,14 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-html {
-    overflow-x: hidden;
+body {
+    background-image: url('clouds-on-blue-sky-vector.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: darken;
 }
 
 .mommy {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     /* align-items: center; */
+}
+
+.left-half {
+    width: 40%;
+}
+
+.right-half {
+    width: 60%;
+    background-color: white;
 }
 
 h1,
@@ -26,6 +40,8 @@ h1 {
 }
 
 .intro-section {
+    background-color: white;
+    opacity: 70%;
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0px 15px 50px rgba(0, 0, 0, 0.5);
