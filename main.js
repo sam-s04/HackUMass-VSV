@@ -136,11 +136,6 @@ button.addEventListener('click', () => {
   console.log('button clicked lolol');
   g1.randomizeGrid(color_list, 2);
   g1.updateGrid();
-  // const pixels = Array.from(document.getElementsByClassName('1'));
-  // pixels.forEach(pixel => {
-  //   const coord = JSON.parse(pixel.classList[1]);
-  //   g1.colorPixel(pixel, g1.getGrid()[coord[0]][coord[1]]);
-  // });
   setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
 })
 
