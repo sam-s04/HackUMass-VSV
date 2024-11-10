@@ -146,12 +146,14 @@ function run_game() {
     eraser.style.borderColor = "black";
   });
 
-  setTimeout(() => { grid_element1.clearGrid(); }, 10000);
-
   activate_pixels();
+
+  setTimeout(() => { 
+    g1.clearGrid(); 
+    g1.updateGrid(); 
+  }, 10000);
 }
 
 button.addEventListener('click', () => {
   run_game();
-  setTimeout(() => { run_game(); }, 15000);
 })
