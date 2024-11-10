@@ -1,6 +1,19 @@
 import { Grid } from './grid.js';
 import { leaderboard } from './leaderboard.js'
 
+
+let players = await leaderboard.getAllScores();
+const l = document.getElementById('leaderboard');
+for (let item of players) {
+  let new_div = document.createElement('div')
+  new_div.innerHTML = `${item.name}: ${item.score}`;
+  new_div.style.fontFamily = 'Raleway';
+  new_div.style.fontSize = '25px';
+  new_div.style.fontWeight = 'bold';
+  l.appendChild(new_div);
+}
+
+
 const colors = [
   "#3357ff", // Royal Blue
   "#e75480", // Pink
@@ -201,7 +214,7 @@ async function run_game() {
     score.innerHTML = `<h2>Score: ${total_score}</h2>`;
   }
   clearInterval(timer_interval);
-  Leaderboard.saveScore(name, total_score);
+  leaderboard.saveScore(name, total_score);
 }
 
 function setup_palette() {
