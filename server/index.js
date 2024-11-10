@@ -19,7 +19,7 @@ app.post('/save', async (req, res) => {
   const options = req.query;
   await database.saveScore(options['name'], options['score']);
   res.status(200);
-  res.json({'status':'saved'});
+  res.json({ 'status': 'saved' });
   await database.close();
 });
 
@@ -28,6 +28,7 @@ app.get('/load', async (req, res) => {
   const data = await database.loadAllScores();
   res.status(200);
   res.json(data);
+
   await database.close();
 });
 
@@ -45,6 +46,6 @@ app.delete('/delete', async (req, res) => {
   const options = req.query;
   await database.deleteScore(options['name'], options['score']);
   res.status(200);
-  res.json({'status':'deleted'});
+  res.json({ 'status': 'deleted' });
   await database.close();
 });
