@@ -25,8 +25,7 @@ app.post('/save', async (req, res) => {
 
 app.get('/load', async (req, res) => {
   await database.connect();
-  const options = req.query;
-  const data = await database.loadScore(options['name'], options['score']);
+  const data = await database.loadAllScores();
   res.status(200);
   res.json(data);
   await database.close();

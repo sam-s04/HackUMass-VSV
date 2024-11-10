@@ -17,10 +17,11 @@ class Leaderboard {
       }
     }
   
-    async getScore(name){
+    async getAllScores(){
       try{
-        let response = await fetch(`/load?name=${name}`, {method: 'GET'});
-        return response.json();
+        let response = await fetch(`/load`, {method: 'GET'});
+        res = response.json;
+        this.board.push(Object.values(res));
       }
       catch(err){
         console.log(err);

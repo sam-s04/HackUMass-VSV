@@ -33,9 +33,9 @@ async saveScore(name, score) { // create, post
     await this.collection.insertOne({ 'name': name, 'score': score });
 }
 
-async loadScore(name) { // read, get
+async loadAllScores() { // read, get
     this.connect();
-    const data = await this.collection.findOne({ 'name': name});
+    const data = await this.collection.find({}).toArray();
     return data;
 }
 
