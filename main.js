@@ -106,8 +106,8 @@ function generatePermutation(n) {
   const arr = Array(n).fill(1).map(x => (temp += x) - 1);
   // fisher yates
   for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
 }
@@ -136,6 +136,7 @@ async function run_game() {
     color_list = get_random_number(4);
     // Reference image, must disappear in a bit
     g1.newGrid(5, 5);
+    const copyGrid = g1.grid.map(row => row.map(x => x));
     // User paint image
     g2.newGrid(5, 5);
 
@@ -153,13 +154,12 @@ async function run_game() {
 
     let viewable = new Promise(resolve => setTimeout(resolve, 10000)); // time the painting is visible
     await viewable;
-    
     g1.clearGrid();
     g1.updateGrid();
 
     let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
     await unviewable;
-    total_score += g1.calcScore(g2);
+    total_score += g1.calcScore(copyGrid);
   }
 }
 
@@ -175,7 +175,7 @@ function setup_palette() {
     const activate_color = () => set_paintbrush(circ, circ.style.backgroundColor);
     circ.addEventListener("click", activate_color);
     document.addEventListener("keydown", e => {
-      if (e.key === (idx+1).toString()) {
+      if (e.key === (idx + 1).toString()) {
         activate_color();
       }
     });

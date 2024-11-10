@@ -67,7 +67,7 @@ export class Grid {
   }
 
   calcScore(reference_grid) {
-    correct_grid = reference_grid.getGrid();
+    correct_grid = reference_grid;
     total_score = 0;
     const pts_per_correct = 1
     const compare_colors = (c1, c2) => c1 === c2 ? pts_per_correct : 0;
@@ -76,13 +76,6 @@ export class Grid {
         (row_score, curr_color, j) => row_score + compare_colors(curr_color, correct_grid[i][j]), score
       );
     }, 0)
-    // for (i = 0; i < user_ans.length; i++) {
-    //   // Get element by ID and compare colors
-    //   elem1 = html.getElementById();
-    //   elem2 = html.getElementById();
-    //   // if elem1.getComputedStyle().fill == elem2.getComputedStyle().fill
-    //   // Score += 1
-    // }
     return total_score;
   }
 
