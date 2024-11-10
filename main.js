@@ -10,7 +10,6 @@ const colors = [
   "#85C1E9", // Sky Blue
   "#A3E4D7", // Turquoise
   "#F4D03F", // Golden
-  "#48C9B0", // Teal
   "#F1948A", // Light Salmon
   "#689942", // Green
   "#EB984E", // Burnt Orange
