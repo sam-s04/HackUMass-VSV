@@ -1,4 +1,5 @@
 import { Grid } from './grid.js';
+import { saveScore, loadScore, editScore, deleteScore } from './db.js'
 
 const colors = [
   "#3357FF", // Royal Blue
@@ -49,7 +50,8 @@ const palette_circle_list = Array.from(document.getElementsByClassName('palette-
 
 let color = "ffffff";
 
-const button = document.getElementById('button-wrapper');
+const button = document.getElementById('start_button');
+const input = document.getElementById('name');
 
 function set_paintbrush(element, rgb) {
   palette_circle_list.forEach(circ => {
@@ -161,6 +163,10 @@ async function run_game() {
     await unviewable;
     total_score += g1.calcScore(copyGrid);
   }
+  let elem = document.createElement('div');
+  elem.innerHTML = `Total score: ${total_score}`;
+  elem.classList.append('score-wrapper')
+  document.getElementById('right-half').appendChild(elem);
 }
 
 function setup_palette() {

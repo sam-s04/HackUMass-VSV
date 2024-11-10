@@ -160,7 +160,7 @@ h1 {
     padding-top: 10px;
 }
 
-input {
+#start_button {
     background-color: rgb(181, 255, 193);
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
@@ -168,6 +168,12 @@ input {
     height: 50px;
     border-radius: 5px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+#name {
+    font-size: large;
+    text-align: center;
+    border-radius: 5px;
 }
 
 /* .game-container {
