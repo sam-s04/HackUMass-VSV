@@ -181,7 +181,7 @@ async function run_game() {
 
     let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
     await unviewable;
-    total_score += g1.calcScore(copyGrid);
+    total_score += g2.calcScore(copyGrid);
     document.getElementById('score').innerHTML = `<h2>Score: ${total_score}</h2>`;
   }
 }
