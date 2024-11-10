@@ -5,9 +5,14 @@ class Database {
     async connect() {
         this.uri =
             "mongodb+srv://ssheedy:WZqgjWWHnZU4BsTl@vsv.wcf72.mongodb.net/?retryWrites=true&w=majority";
+        const options = {
+            ssl: true,
+            tls: true,
+            tlsAllowInvalidCertificates: false,
+            autoSelectFamily: false
+        };
 
-
-        this.client = new MongoClient(this.uri);
+        this.client = new MongoClient(this.uri, options);
 
         try {
             await this.client.connect();
