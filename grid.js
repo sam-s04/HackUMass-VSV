@@ -67,7 +67,7 @@ export class Grid {
   }
 
   calcScore(reference_grid) {
-    correct_grid = reference_grid;
+    let correct_grid = reference_grid;
     total_score = 0;
     const pts_per_correct = 1
     const compare_colors = (c1, c2) => c1 === c2 ? pts_per_correct : 0;
