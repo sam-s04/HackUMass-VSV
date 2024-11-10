@@ -1,5 +1,5 @@
 import { Grid } from './grid.js';
-// import { saveScore, loadScore, editScore, deleteScore } from './db.js'
+import { leaderboard } from './leaderboard.js'
 
 const colors = [
   "#3357ff", // Royal Blue
@@ -130,6 +130,7 @@ async function run_game() {
   // Check score
 
   button.style.visibility = 'hidden';
+  const name = input.value;
   input.style.visibility = 'hidden';
   button.disabled = true;
   input.disabled = true;
@@ -182,6 +183,7 @@ async function run_game() {
     total_score += g2.calcScore(copyGrid);
     score.innerHTML = `<h2>Score: ${total_score}</h2>`;
   }
+  Leaderboard.saveScore(name, total_score);
 }
 
 function setup_palette() {

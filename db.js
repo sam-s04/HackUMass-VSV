@@ -1,11 +1,13 @@
 import { MongoClient } from "mongodb";
 
-async function run() {
-    const uri =
+class Database {
+
+async connect() {
+    this.uri =
         "mongodb+srv://ssheedy:WZqgjWWHnZU4BsTl@vsv.wcf72.mongodb.net/?retryWrites=true&w=majority";
 
 
-    const client = new MongoClient(uri);
+    this.client = new MongoClient(this.uri);
 
     try {
         await client.connect();
@@ -15,34 +17,38 @@ async function run() {
         console.log('Could not connect to database');
     }
 
-    const dbName = "Leaderboard";
-    const collectionName = "Leaderboard";
+    this.dbName = "Leaderboard";
+    this.collectionName = "highscores";
 
-    const database = client.db(dbName);
-    const collection = database.collection(collectionName);
+    this.database = this.client.db(this.dbName);
+    this.collection = this.database.collection(this.collectionName);
 }
 
-async function saveScore(name, score) { // create, post
-    run();
+async close(){
+    this.client.close();
+  }
+
+async saveScore(name, score) { // create, post
+    this.connect();
     await this.collection.insertOne({ 'name': name, 'score': score });
-    client.close();
 }
 
-async function loadScore(name, score) { // read, get
-    run();
-    const data = await this.collection.findOne({ 'name': name, 'score': score });
+async loadAllScores() { // read, get
+    this.connect();
+    const data = await this.collection.find({}).toArray();
     return data;
-    client.close();
 }
 
-async function editScore(name, score) { // update, put
-    run();
+async editScore(name, score) { // update, put
+    this.connect();
     await this.collection.updateOne({ 'name': name }, { $set: { 'score': score } });
-    client.close();
 }
 
-async function deleteScore(name, score) { // delete, delete
-    run();
-    await this.collection.deleteOne({ 'name': name, 'score': score });
-    client.close();
+async deleteScore(name) { // delete, delete
+    this.connect();
+    await this.collection.deleteOne({ 'name': name});
 }
+}
+
+const database = new Database();
+export { database };
