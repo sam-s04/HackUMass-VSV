@@ -164,6 +164,7 @@ async function run_game() {
   button.disabled = true;
   input.disabled = true;
   game_info.style.visibility = 'visible';
+  gameover_div.style.visibility = 'hidden';
 
   score.innerHTML = "<h2>Score: 0 </h2>";
   // Reference image, must disappear in a bit
@@ -179,7 +180,7 @@ async function run_game() {
   const g1_cells = Array.from(document.getElementsByClassName("g1"));
   const g2_cells = Array.from(document.getElementsByClassName("g2"));
 
-  const difficulties = [5, 2, 1, 0]
+  const difficulties = [4, 2, 1, 0]
   let timer_interval = null;
 
   let total_score = 0
@@ -214,7 +215,7 @@ async function run_game() {
     g1_cells.forEach(cell => cell.classList.remove("fast-transition"));
     await random_clear_grid(g1);
     g1_cells.forEach(cell => cell.classList.add("fast-transition"));
-    const remaining_wait_time = 20000 - (Date.now() - start_time);
+    const remaining_wait_time = 2000 - (Date.now() - start_time);
     let unviewable = new Promise(resolve => setTimeout(resolve, remaining_wait_time)); // time the user can draw with no painting visible
     await unviewable;
     total_score += g2.calcScore(copyGrid);
@@ -224,9 +225,9 @@ async function run_game() {
   leaderboard.saveScore(name, total_score);
   gameover_div.innerHTML = `<h2>Game Over! Your score is: ${total_score}</h2>`;
   gameover_div.style.visibility = 'visible';
-  // button.style.visibility = 'visible';
-  // input.style.visibility = 'visible';
-  // button.disabled = true;
+  button.style.visibility = 'visible';
+  input.style.visibility = 'visible';
+  button.disabled = false;
   // input.disabled = true;
   // input.value = "";
   // game_info.style.visibility = 'visible';
