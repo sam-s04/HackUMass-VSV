@@ -2,23 +2,23 @@ import { Grid } from './grid.js';
 // import { saveScore, loadScore, editScore, deleteScore } from './db.js'
 
 const colors = [
-  "#3357FF", // Royal Blue
-  "#E75480", // Pink
+  "#3357ff", // Royal Blue
+  "#e75480", // Pink
   "#581845", // Dark Purple
-  "#900C3F", // Burgundy
-  "#C70039", // Crimson
-  "#DAF7A6", // Light Green
-  "#85C1E9", // Sky Blue
-  "#A3E4D7", // Turquoise
-  "#F4D03F", // Golden
-  "#F1948A", // Light Salmon
+  "#900c3f", // Burgundy
+  "#c70039", // Crimson
+  "#daf7a6", // Light Green
+  "#85c1e9", // Sky Blue
+  "#a3e4d7", // Turquoise
+  "#f4D03f", // Golden
+  "#f1948a", // Light Salmon
   "#689942", // Green
-  "#EB984E", // Burnt Orange
-  "#A569BD", // Medium Purple
-  "#5499C7", // Light Royal Blue
-  "#48C9B0", // Light Teal
-  "#FF5733", // Light Coral
-  "#00527A", // Dark Blue
+  "#eb984e", // Burnt Orange
+  "#a569bd", // Medium Purple
+  "#5499c7", // Light Royal Blue
+  "#48c9b0", // Light Teal
+  "#ff5733", // Light Coral
+  "#00527a", // Dark Blue
 ];
 
 const get_random_number = (count) => {
@@ -119,8 +119,8 @@ async function random_clear_grid(grid) {
   const pixels_to_clear = generatePermutation(pixels);
   for (const pixel of pixels_to_clear) {
     console.log(pixel);
-    grid.colorPixel(pixel, "FFFFFF");
-    await new Promise(r => setTimeout(r, 400));
+    grid.colorPixel(pixel, "ffffff");
+    await new Promise(r => setTimeout(r, 300));
   }
   // pixels_to_clear.forEach(async (pixel) => {
   //   grid.colorPixel(pixel, "FFFFFF");

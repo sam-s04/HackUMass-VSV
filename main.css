@@ -129,6 +129,10 @@ h1 {
     background-image: url("./old_victor.jpg");
 }
 
+#score {
+    margin-left: 75px;
+}
+
 .creator-img {
     width: 100px;
     height: 100px;

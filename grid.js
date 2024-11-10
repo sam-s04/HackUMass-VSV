@@ -70,8 +70,10 @@ export class Grid {
     let correct_grid = reference_grid;
     let total_score = 0;
     const compare_colors = (c1, c2) => c1 === c2 ? 1 : 0;
-    for (row in this.grid) {
-      for (col in this.grid[row]) {
+    for (let row in this.grid) {
+      for (let col in this.grid[row]) {
+        console.log(this.grid[row][col]);
+        console.log(correct_grid[row][col]);
         total_score += (this.grid[row][col] === correct_grid[row][col] ? 1 : 0);
       }
     }
