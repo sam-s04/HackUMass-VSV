@@ -69,13 +69,12 @@ export class Grid {
   calcScore(reference_grid) {
     let correct_grid = reference_grid;
     let total_score = 0;
-    const pts_per_correct = 1
-    const compare_colors = (c1, c2) => c1 === c2 ? pts_per_correct : 0;
-    total_score = this.grid.reduce((score, row, i) => {
-      return row.reduce(
-        (row_score, curr_color, j) => row_score + compare_colors(curr_color, correct_grid[i][j]), score
-      );
-    }, 0)
+    const compare_colors = (c1, c2) => c1 === c2 ? 1 : 0;
+    for (row in this.grid) {
+      for (col in this.grid[row]) {
+        total_score += (this.grid[row][col] === correct_grid[row][col] ? 1 : 0);
+      }
+    }
     return total_score;
   }
 
