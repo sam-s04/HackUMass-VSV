@@ -123,6 +123,7 @@ async function run_game() {
 
   for (let i in color_circle_list) {
     console.log(color_list[i])
+    color_circle_list[i].style.visibility = "visible";
     color_circle_list[i].style.backgroundColor = color_list[i];
   }
   eraser.style.visibility = "visible";
