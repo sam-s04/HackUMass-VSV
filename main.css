@@ -117,6 +117,14 @@ h1 {
     transition: background-color 2s ease-in;
 }
 
+/* .slow-transition {
+    transition: background-color 2s ease-in;
+} */
+
+.fast-transition {
+    transition: background-color 0.5s ease-in;
+}
+
 #img-vin {
     background-image: url("./Bio_Image_Vin_1.jpg");
 }
@@ -131,7 +139,8 @@ h1 {
 
 #score {
     visibility: hidden;
-    margin-left: 75px;
+    display: flex;
+    justify-content: center;
 }
 
 .creator-img {

@@ -72,7 +72,7 @@ export class Grid {
     const compare_colors = (c1, c2) => c1 === c2 ? 1 : 0;
     for (let row in this.grid) {
       for (let col in this.grid[row]) {
-        total_score += (this.grid[row][col] === correct_grid[row][col] ? 1 : 0);
+        total_score += (this.grid[row][col].toLowerCase() === correct_grid[row][col].toLowerCase() ? 1 : 0);
         console.log(total_score, this.grid[row][col], correct_grid[row][col]);
       }
     }
@@ -102,12 +102,18 @@ export class Grid {
     }
 
     const get_neighbors = (i, j) => {
-      const out = [1, -1].reduce((values, offset_height) => {
-        [1, -1].forEach(offset_width => {
-          if (in_grid_range(i + offset_height, j + offset_width) && this.grid[i + offset_height][j + offset_width] !== null) {
-            values.push(this.grid[i + offset_height][j + offset_width]);
-          }
-        });
+      const out = [1, -1].reduce((values, offset) => {
+        if (in_grid_range(i + offset, j) && this.grid[i + offset][j] !== null) {
+          values.push(this.grid[i + offset][j]);
+        }
+        if (in_grid_range(i, j + offset) && this.grid[i][j + offset] !== null) {
+          values.push(this.grid[i][j + offset]);
+        }
+        // [i, j].forEach(coord => {
+        //   if (in_grid_range(i + offset_height, j + offset_width) && this.grid[i + offset_height][j + offset_width] !== null) {
+        //     values.push(this.grid[i + offset_height][j + offset_width]);
+        //   }
+        // });
         return values;
       }, []);
       return out;
