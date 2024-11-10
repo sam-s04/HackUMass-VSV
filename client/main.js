@@ -34,6 +34,7 @@ let g2 = new Grid(2);
 const grid_element1 = document.getElementById('grid1');
 const grid_element2 = document.getElementById('grid2');
 const score = document.getElementById('score');
+const timer = document.getElementById('timer');
 
 // Reference image, must disappear in a bit
 g1.newGrid(5, 5);
@@ -112,6 +113,13 @@ function generatePermutation(arr) {
   return arr;
 }
 
+function start_timer() {
+  let time_left = 20;
+  timer.innerHTML = `<h2>Time left: ${time_left} </h2>`;
+  const interval = setInterval(() => timer.innerHTML = `<h2>Time left: ${--time_left} </h2>`, 1000);
+  return interval;
+}
+
 async function random_clear_grid(grid) {
   const pixels = Array.from(document.getElementsByClassName('g1'));
   const pixels_to_clear = generatePermutation(pixels);
@@ -136,7 +144,7 @@ async function run_game() {
   input.disabled = true;
   score.style.visibility = 'visible';
 
-  document.getElementById('score').innerHTML = "<h2>Score: 0 </h2>";
+  score.innerHTML = "<h2>Score: 0 </h2>";
   // Reference image, must disappear in a bit
   g1.newGrid(5, 5);
   // User paint image
@@ -151,6 +159,7 @@ async function run_game() {
   const g2_cells = Array.from(document.getElementsByClassName("g2"));
 
   const difficulties = [5, 2, 1, 0]
+  let timer_interval = null;
 
   let total_score = 0
   for (let i = 0; i < 4; i++) {
@@ -158,9 +167,13 @@ async function run_game() {
     g1.clearGrid();
     g2_cells.forEach(cell => cell.classList.add("fast-transition"));
     g2.clearGrid();
-
+    
+    if (timer_interval !== null) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      clearInterval(timer_interval);
+    }
+    
     g1.randomizeGrid(color_list, difficulties[i]);
-    console.log(g1);
     const copyGrid = g1.getGrid().map(row => row.map(x => x));
     g1.updateGrid();
     g2.updateGrid();
@@ -173,12 +186,15 @@ async function run_game() {
     color = "ffffff";
     palette_circle_list.forEach(circ => circ.classList.remove("active"));
 
+    const start_time = Date.now();
+    timer_interval = start_timer();
     let viewable = new Promise(resolve => setTimeout(resolve, 10000)); // time the painting is visible
     await viewable;
     g1_cells.forEach(cell => cell.classList.remove("fast-transition"));
     await random_clear_grid(g1);
     g1_cells.forEach(cell => cell.classList.add("fast-transition"));
-    let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
+    const remaining_wait_time = 20000 - (Date.now() - start_time);
+    let unviewable = new Promise(resolve => setTimeout(resolve, remaining_wait_time)); // time the user can draw with no painting visible
     await unviewable;
     total_score += g2.calcScore(copyGrid);
     score.innerHTML = `<h2>Score: ${total_score}</h2>`;
