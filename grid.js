@@ -39,17 +39,9 @@ export class Grid {
   setup(element) {
     element.innerHTML = '';
     let scale = 40;
-    element.innerHTML = `<style id="style">
-        .grid-class {
-          display: grid;
-          margin: auto;
-          grid-template-columns: repeat(${this.width}, auto);
-          height: ${this.height * scale}px;
-          width: ${this.width * scale}px;
-          margin-bottom: 3em;
-        }
-        </style>`;
-
+    element.style.height = `${this.height * scale}px`;
+    element.style.width = `${this.width * scale}px`;
+    element.style.gridTemplateColumns = `repeat(${this.width}, auto)`;
     for (let i = 0; i < this.height; i++) {
       for (let j = 0; j < this.width; j++) {
         let new_pixel = document.createElement('div');
