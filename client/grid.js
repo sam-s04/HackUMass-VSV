@@ -73,7 +73,7 @@ export class Grid {
     for (let row in this.grid) {
       for (let col in this.grid[row]) {
         total_score += (this.grid[row][col].toLowerCase() === correct_grid[row][col].toLowerCase() ? 1 : 0);
-        console.log(total_score, this.grid[row][col], correct_grid[row][col]);
+        console.log(total_score, this.grid[row][col].toLowerCase(), correct_grid[row][col].toLowerCase());
       }
     }
     return total_score;

@@ -67,6 +67,13 @@ let color = "ffffff";
 
 const button = document.getElementById('start_button');
 const input = document.getElementById('name');
+const title_button = document.getElementById("title-button")
+
+function start_game() {
+  document.getElementById("title-screen").style.display = "none";
+}
+
+title_button.addEventListener("click", start_game);
 
 function set_paintbrush(element, rgb) {
   palette_circle_list.forEach(circ => {
