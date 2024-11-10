@@ -76,7 +76,7 @@ function paint_pixel(pixel) {
 }
 
 function activate_pixels() {
-  const pixels = Array.from(document.getElementsByClassName('2'));
+  const pixels = Array.from(document.getElementsByClassName('g2'));
   const pixel_event_funcs = [];
   pixels.forEach(pixel => {
     const paint_curr_pixel = () => paint_pixel(pixel);
@@ -115,12 +115,12 @@ function generatePermutation(arr) {
 }
 
 async function random_clear_grid(grid) {
-  const pixels = Array.from(document.getElementsByClassName('1'));
+  const pixels = Array.from(document.getElementsByClassName('g1'));
   const pixels_to_clear = generatePermutation(pixels);
   for (const pixel of pixels_to_clear) {
     console.log(pixel);
     grid.colorPixel(pixel, "FFFFFF");
-    await new Promise(r => setTimeout(r, 300));
+    await new Promise(r => setTimeout(r, 400));
   }
   // pixels_to_clear.forEach(async (pixel) => {
   //   grid.colorPixel(pixel, "FFFFFF");
@@ -136,9 +136,13 @@ async function run_game() {
   // You have 15 to color out the palette
   // Check score
 
-  button.style.display = 'none';
-  input.style.display = 'none';
+  // button.style.display = 'none';
+  // input.style.display = 'none';
   button.style.visibility = 'hidden';
+  input.style.visibility = 'hidden';
+  button.disabled = true;
+  input.disabled = true;
+
   document.getElementById('score').innerHTML = "<h2>Score: 0 </h2>";
   // Reference image, must disappear in a bit
   g1.newGrid(5, 5);

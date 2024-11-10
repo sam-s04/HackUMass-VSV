@@ -113,7 +113,7 @@ h1 {
     gap: 20px;
 }
 
-.grid-class div {
+.g1 {
     transition: background-color 2.5s ease-in;
 }
 

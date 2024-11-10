@@ -44,7 +44,7 @@ export class Grid {
         new_pixel.style.borderRadius = '3px';
         new_pixel.classList.add('pixel');
         new_pixel.classList.add(`[${i},${j}]`);
-        new_pixel.classList.add(`${this.id}`)
+        new_pixel.classList.add(`g${this.id}`)
         let color = this.grid[i][j];
         this.colorPixel(new_pixel, color);
         element.appendChild(new_pixel);
