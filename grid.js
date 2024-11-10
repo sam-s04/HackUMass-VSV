@@ -15,7 +15,7 @@ export class Grid {
   }
 
   clearGrid() {
-    this.grid = this.grid.map(row => row.map(x => 'ffffff'))
+    this.grid = this.grid.map(row => row.map(_ => 'ffffff'))
   }
 
   newGrid(height, width) {
@@ -53,7 +53,7 @@ export class Grid {
   }
 
   updateGrid() {
-    const pixels = Array.from(document.getElementsByClassName('1'));
+    const pixels = Array.from(document.getElementsByClassName(`g${this.id}`));
     pixels.forEach(pixel => {
       const pos = JSON.parse(pixel.classList[1]);
       this.colorPixel(pixel, this.grid[pos[0]][pos[1]]);
@@ -72,9 +72,8 @@ export class Grid {
     const compare_colors = (c1, c2) => c1 === c2 ? 1 : 0;
     for (let row in this.grid) {
       for (let col in this.grid[row]) {
-        console.log(this.grid[row][col]);
-        console.log(correct_grid[row][col]);
         total_score += (this.grid[row][col] === correct_grid[row][col] ? 1 : 0);
+        console.log(total_score, this.grid[row][col], correct_grid[row][col]);
       }
     }
     return total_score;

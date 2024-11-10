@@ -104,8 +104,6 @@ function activate_pixels() {
 }
 
 function generatePermutation(arr) {
-  // let temp = 0;
-  // const arr = Array(n).fill(1).map(x => (temp += x) - 1);
   // fisher yates
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -118,14 +116,9 @@ async function random_clear_grid(grid) {
   const pixels = Array.from(document.getElementsByClassName('g1'));
   const pixels_to_clear = generatePermutation(pixels);
   for (const pixel of pixels_to_clear) {
-    console.log(pixel);
     grid.colorPixel(pixel, "ffffff");
     await new Promise(r => setTimeout(r, 300));
   }
-  // pixels_to_clear.forEach(async (pixel) => {
-  //   grid.colorPixel(pixel, "FFFFFF");
-  //   await new Promise(r => setTimeout(r, 300));
-  // });
 }
 
 async function run_game() {
@@ -136,8 +129,6 @@ async function run_game() {
   // You have 15 to color out the palette
   // Check score
 
-  // button.style.display = 'none';
-  // input.style.display = 'none';
   button.style.visibility = 'hidden';
   input.style.visibility = 'hidden';
   button.disabled = true;
@@ -149,31 +140,28 @@ async function run_game() {
   // User paint image
   g2.newGrid(5, 5);
 
-  g1.randomizeGrid(color_list, 2);
-  g1.updateGrid();
   g1.setup(grid_element1);
   g2.setup(grid_element2);
 
   let total_score = 0
   for (let i = 0; i < 5; i++) {
     color_list = get_random_number(4);
-    // Reference image, must disappear in a bit
-    g1.newGrid(5, 5);
-    const copyGrid = g1.getGrid().map(row => row.map(x => x));
-    // User paint image
-    g2.newGrid(5, 5);
+    g1.clearGrid();
+    g2.clearGrid();
 
     g1.randomizeGrid(color_list, 2);
+    console.log(g1)
+    const copyGrid = g1.getGrid().map(row => row.map(x => x));
     g1.updateGrid();
     g2.updateGrid();
-    g1.setup(grid_element1);
-    g2.setup(grid_element2);
 
     for (let i in color_circle_list) {
       color_circle_list[i].style.backgroundColor = color_list[i];
     }
 
     activate_pixels();
+    color = "ffffff";
+    palette_circle_list.forEach(circ => circ.classList.remove("active"));
 
     let viewable = new Promise(resolve => setTimeout(resolve, 10000)); // time the painting is visible
     await viewable;
