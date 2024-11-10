@@ -97,9 +97,8 @@ function activate_pixels() {
 
 button.addEventListener('click', () => {
   console.log('button clicked lolol');
-  g1.randomizeGrid(color_list, 2);
-  g1.updateGrid();
-  setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
+  run_game();
+
 })
 
 function run_game() {
@@ -109,15 +108,14 @@ function run_game() {
   // Set the timer for 10 seconds ref goes away
   // You have 15 to color out the palette
   // Check score
-
+  button.style.visibility = 'hidden';
   // Reference image, must disappear in a bit
   g1.newGrid(5, 5);
   // User paint image
   g2.newGrid(5, 5);
 
-  g1.render(grid_element1);
-  g2.render(grid_element2);
-
+  g1.setup(grid_element1);
+  g2.setup(grid_element2);
 
   for (let i in color_circle_list) {
     console.log(color_list[i])
@@ -127,7 +125,7 @@ function run_game() {
   color_circle_list.forEach(circ => {
     circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
   });
-  
+
   eraser.addEventListener("click", () => {
     color = "ffffff";
     color_circle_list.forEach(circ => {

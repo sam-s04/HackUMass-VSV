@@ -36,7 +36,7 @@ export class Grid {
     this.width = width;
   }
 
-  render(element) {
+  setup(element) {
     element.innerHTML = '';
     let scale = 40;
     element.innerHTML = `<style id="style">
