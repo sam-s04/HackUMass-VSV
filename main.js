@@ -31,11 +31,6 @@ console.log(color_list);
 let g1 = new Grid(1);
 let g2 = new Grid(2);
 
-// Reference image, must disappear in a bit
-g1.newGrid(5, 5);
-// User paint image
-g2.newGrid(5, 5);
-
 const grid_element1 = document.getElementById('grid1');
 const grid_element2 = document.getElementById('grid2');
 
@@ -44,18 +39,9 @@ const eraser = document.getElementById('eraser');
 let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
 console.log(color_circle_list);
 
-const button = document.getElementById('button-wrapper');
-
-g1.render(grid_element1);
-g2.render(grid_element2);
-
-
-for (let i in color_circle_list) {
-  console.log(color_list[i])
-  color_circle_list[i].style.backgroundColor = color_list[i];
-}
-
 let color = "ffffff";
+
+const button = document.getElementById('button-wrapper');
 
 function set_paintbrush(element, rgb) {
   color_circle_list.forEach(circ => {
@@ -76,18 +62,6 @@ function set_paintbrush(element, rgb) {
   color = b.join("");
   element.style.borderColor = "black";
 }
-
-color_circle_list.forEach(circ => {
-  circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
-});
-
-eraser.addEventListener("click", () => {
-  color = "ffffff";
-  color_circle_list.forEach(circ => {
-    circ.style.borderColor = "white";
-  });
-  eraser.style.borderColor = "black";
-});
 
 function paint_pixel(pixel) {
   g2.colorPixel(pixel, color);
@@ -128,8 +102,6 @@ button.addEventListener('click', () => {
   setTimeout(() => { grid_element1.style.display = 'none'; }, 10000);
 })
 
-activate_pixels();
-
 function run_game() {
   // 5 times, do:
   // render both grids, first one being the reference
@@ -137,5 +109,35 @@ function run_game() {
   // Set the timer for 10 seconds ref goes away
   // You have 15 to color out the palette
   // Check score
+
+  // Reference image, must disappear in a bit
+  g1.newGrid(5, 5);
+  // User paint image
+  g2.newGrid(5, 5);
+
+  g1.render(grid_element1);
+  g2.render(grid_element2);
+
+
+  for (let i in color_circle_list) {
+    console.log(color_list[i])
+    color_circle_list[i].style.backgroundColor = color_list[i];
+  }
+
+  color_circle_list.forEach(circ => {
+    circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
+  });
+  
+  eraser.addEventListener("click", () => {
+    color = "ffffff";
+    color_circle_list.forEach(circ => {
+      circ.style.borderColor = "white";
+    });
+    eraser.style.borderColor = "black";
+  });
+
+  activate_pixels();
 }
+
+run_game();
 
