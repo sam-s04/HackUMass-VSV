@@ -133,12 +133,21 @@ function run_game() {
     circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
   });
 
-  eraser.addEventListener("click", () => {
+  const activate_eraser = () => {
     color = "ffffff";
     color_circle_list.forEach(circ => {
       circ.style.borderColor = "white";
     });
     eraser.style.borderColor = "black";
+  }
+
+  eraser.addEventListener("click", activate_eraser);
+
+  document.addEventListener("keydown", e => {
+    console.log("e");
+    if (e.key === " ") {
+      activate_eraser();
+    }
   });
 
   activate_pixels();
