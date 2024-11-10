@@ -36,7 +36,7 @@ class Leaderboard {
       }
     }
   
-    async deleteSaved(name){
+    async deleteScore(name){
       const index = this.board.indexOf(name);
       this.board.splice(index, 1);
       try{
