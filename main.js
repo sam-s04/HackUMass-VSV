@@ -44,18 +44,17 @@ g2.setup(grid_element2);
 
 const eraser = document.getElementById('eraser');
 
-let color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
+const color_circle_list = Array.from(document.getElementsByClassName('color-circle'));
+const palette_circle_list = Array.from(document.getElementsByClassName('palette-circle'));
 
 let color = "ffffff";
 
 const button = document.getElementById('button-wrapper');
 
 function set_paintbrush(element, rgb) {
-  color_circle_list.forEach(circ => {
-    circ.style.borderColor = "white";
+  palette_circle_list.forEach(circ => {
+    circ.classList.remove("active");
   });
-
-  eraser.style.borderColor = "white";
 
   var a = rgb.split("(")[1].split(")")[0];
 
@@ -67,7 +66,7 @@ function set_paintbrush(element, rgb) {
   });
 
   color = b.join("");
-  element.style.borderColor = "black";
+  element.classList.add("active");
 }
 
 function paint_pixel(pixel) {
@@ -128,22 +127,29 @@ async function run_game() {
   }
   eraser.style.visibility = "visible";
 
-  color_circle_list.forEach(circ => {
-    circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));
+  color_circle_list.forEach((circ, idx) => {
+    const activate_color = () => set_paintbrush(circ, circ.style.backgroundColor);
+    circ.addEventListener("click", activate_color);
+    document.addEventListener("keydown", e => {
+      if (e.key === (idx+1).toString()) {
+        activate_color();
+      }
+    });
   });
 
   const activate_eraser = () => {
     color = "ffffff";
     color_circle_list.forEach(circ => {
-      circ.style.borderColor = "white";
+      circ.classList.remove("active");
+      // circ.style.borderColor = "white";
     });
-    eraser.style.borderColor = "black";
+    eraser.classList.add("active");
+    // eraser.style.borderColor = "black";
   }
 
   eraser.addEventListener("click", activate_eraser);
 
   document.addEventListener("keydown", e => {
-    console.log("e");
     if (e.key === " ") {
       activate_eraser();
     }

@@ -72,9 +72,10 @@ h1 {
     border-radius: 50%;
     display: inline-block;
     visibility: hidden;
+    transition: border-color 0.2s ease;
 }
 
-#eraser {
+.eraser {
     height: 40px;
     width: 40px;
     background-color: white;
@@ -86,6 +87,10 @@ h1 {
     background-position: center;
     background-size: 85%;
     visibility: hidden;
+}
+
+.palette-circle.active {
+    border-color: black;
 }
 
 .grid-class {
