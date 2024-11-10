@@ -1,29 +1,21 @@
 import { Grid } from './grid.js';
 const colors = [
-  "#FF5733", // Orange Red
   "#3357FF", // Royal Blue
   "#E75480", // Pink
-  "#FFC300", // Bright Yellow
   "#581845", // Dark Purple
   "#900C3F", // Burgundy
   "#C70039", // Crimson
   "#DAF7A6", // Light Green
-  "#FF5733", // Coral
   "#85C1E9", // Sky Blue
   "#A3E4D7", // Turquoise
   "#F4D03F", // Golden
-  "#5DADE2", // Light Blue
-  "#AF7AC5", // Lavender
   "#48C9B0", // Teal
   "#F1948A", // Light Salmon
-  "#F5B041", // Light Orange
   "#689942", // Green
   "#EB984E", // Burnt Orange
   "#A569BD", // Medium Purple
   "#5499C7", // Light Royal Blue
   "#48C9B0", // Light Teal
-  "#F4D03F", // Light Goldenrod
-  "#85C1E9", // Light Blue Sky
   "#FF5733", // Light Coral
   "#00527A", // Dark Blue
 ];
