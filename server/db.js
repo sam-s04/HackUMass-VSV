@@ -9,7 +9,7 @@ class Database {
             ssl: true,
             tls: true,
             tlsAllowInvalidCertificates: false,
-            autoSelectFamily: false
+            autoSelectFamily: false // option bc for some reason when this is true, it doesn't work on victor's laptop
         };
 
         this.client = new MongoClient(this.uri, options);
