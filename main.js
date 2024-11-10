@@ -101,15 +101,29 @@ function activate_pixels() {
   });
 }
 
-function generatePermutation(n) {
-  let temp = 0;
-  const arr = Array(n).fill(1).map(x => (temp += x) - 1);
+function generatePermutation(arr) {
+  // let temp = 0;
+  // const arr = Array(n).fill(1).map(x => (temp += x) - 1);
   // fisher yates
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
+}
+
+async function random_clear_grid(grid) {
+  const pixels = Array.from(document.getElementsByClassName('1'));
+  const pixels_to_clear = generatePermutation(pixels);
+  for (const pixel of pixels_to_clear) {
+    console.log(pixel);
+    grid.colorPixel(pixel, "FFFFFF");
+    await new Promise(r => setTimeout(r, 300));
+  }
+  // pixels_to_clear.forEach(async (pixel) => {
+  //   grid.colorPixel(pixel, "FFFFFF");
+  //   await new Promise(r => setTimeout(r, 300));
+  // });
 }
 
 async function run_game() {
@@ -154,8 +168,7 @@ async function run_game() {
 
     let viewable = new Promise(resolve => setTimeout(resolve, 10000)); // time the painting is visible
     await viewable;
-    g1.clearGrid();
-    g1.updateGrid();
+    await random_clear_grid(g1);
 
     let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
     await unviewable;

@@ -113,6 +113,10 @@ h1 {
     gap: 20px;
 }
 
+.grid-class div {
+    transition: background-color 2.5s ease-in;
+}
+
 #img-vin {
     background-image: url("./Bio_Image_Vin_1.jpg");
 }
