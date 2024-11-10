@@ -13,7 +13,6 @@ body {
 .mommy {
     display: flex;
     justify-content: space-around;
-    /* align-items: center; */
 }
 
 .left-half {
@@ -21,7 +20,13 @@ body {
 }
 
 .right-half {
+    width: 50%;
     background-color: white;
+    opacity: 70%;
+    border-radius: 15px;
+    /* padding: 10px; */
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+    /* margin-bottom: 15px; */
 }
 
 h1,
@@ -94,6 +99,8 @@ h1 {
     cursor: default;
     padding-right: 15px;
 }
+
+
 
 #img-vin {
     background-image: url("./Bio_Image_Vin_1.jpg");
