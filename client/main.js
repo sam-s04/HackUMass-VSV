@@ -40,7 +40,7 @@ const get_random_number = (count) => {
 }
 
 let color_list = get_random_number(4);
-
+const gameover_div = document.getElementById('game-over');
 let g1 = new Grid(1);
 let g2 = new Grid(2);
 
@@ -188,12 +188,12 @@ async function run_game() {
     g1.clearGrid();
     g2_cells.forEach(cell => cell.classList.add("fast-transition"));
     g2.clearGrid();
-    
+
     if (timer_interval !== null) {
       await new Promise(resolve => setTimeout(resolve, 1000));
       clearInterval(timer_interval);
     }
-    
+
     g1.randomizeGrid(color_list, difficulties[i]);
     const copyGrid = g1.getGrid().map(row => row.map(x => x));
     g1.updateGrid();
@@ -222,6 +222,14 @@ async function run_game() {
   }
   clearInterval(timer_interval);
   leaderboard.saveScore(name, total_score);
+  gameover_div.innerHTML = `<h2>Game Over! Your score is: ${total_score}</h2>`;
+  gameover_div.style.visibility = 'visible';
+  // button.style.visibility = 'visible';
+  // input.style.visibility = 'visible';
+  // button.disabled = true;
+  // input.disabled = true;
+  // input.value = "";
+  // game_info.style.visibility = 'visible';
 }
 
 function setup_palette() {
