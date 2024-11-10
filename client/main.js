@@ -33,6 +33,7 @@ let g2 = new Grid(2);
 
 const grid_element1 = document.getElementById('grid1');
 const grid_element2 = document.getElementById('grid2');
+const game_info = document.getElementById('game-info');
 const score = document.getElementById('score');
 const timer = document.getElementById('timer');
 
@@ -142,7 +143,7 @@ async function run_game() {
   input.style.visibility = 'hidden';
   button.disabled = true;
   input.disabled = true;
-  score.style.visibility = 'visible';
+  game_info.style.visibility = 'visible';
 
   score.innerHTML = "<h2>Score: 0 </h2>";
   // Reference image, must disappear in a bit
@@ -199,6 +200,7 @@ async function run_game() {
     total_score += g2.calcScore(copyGrid);
     score.innerHTML = `<h2>Score: ${total_score}</h2>`;
   }
+  clearInterval(timer_interval);
   Leaderboard.saveScore(name, total_score);
 }
 

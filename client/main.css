@@ -137,10 +137,16 @@ h1 {
     background-image: url("./old_victor.jpg");
 }
 
-#score {
+#game-info {
     visibility: hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#score, #timer {
+    width: 70%;
 }
 
 .creator-img {
