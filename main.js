@@ -39,8 +39,8 @@ g1.newGrid(5, 5);
 // User paint image
 g2.newGrid(5, 5);
 
-g1.render(grid_element1);
-g2.render(grid_element2);
+g1.setup(grid_element1);
+g2.setup(grid_element2);
 
 const eraser = document.getElementById('eraser');
 
