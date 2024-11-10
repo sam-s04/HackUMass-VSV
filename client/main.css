@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     background-image: url('clouds-on-blue-sky-vector.jpg');
     background-size: cover;

@@ -10,10 +10,11 @@ class Database {
         this.client = new MongoClient(this.uri);
 
         try {
-            await client.connect();
+            await this.client.connect();
             console.log('Connected to database');
         }
-        catch {
+        catch(err) {
+            console.log(err);
             console.log('Could not connect to database');
         }
 
