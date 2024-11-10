@@ -28,9 +28,9 @@ async function saveScore(name, score) { // create, post
     client.close();
   }
 
-  async function loadScore(name, score) { // read, get
+  async function loadScore(name) { // read, get
     run();
-    const data = await this.collection.findOne({'name': name, 'score': score});
+    const data = await this.collection.findOne({'name': name});
     return data;
     client.close();
   }
@@ -41,8 +41,8 @@ async function saveScore(name, score) { // create, post
     client.close();
   }
 
-  async function deleteScore(name, score){ // delete, delete
+  async function deleteScore(name){ // delete, delete
     run();
-    await this.collection.deleteOne({'name': name, 'score': score});
+    await this.collection.deleteOne({'name': name});
     client.close();
   }
