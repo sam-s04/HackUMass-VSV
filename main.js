@@ -141,7 +141,7 @@ async function run_game() {
   input.style.visibility = 'hidden';
   button.disabled = true;
   input.disabled = true;
-  score.visibility = 'visiible';
+  score.visibility = 'visible';
 
   document.getElementById('score').innerHTML = "<h2>Score: 0 </h2>";
   // Reference image, must disappear in a bit
