@@ -1,4 +1,22 @@
 import { Grid } from './grid.js';
+import { MongoClient } from "mongodb";
+
+async function run() {
+  const uri =
+    "mongodb+srv://ssheedy:WZqgjWWHnZU4BsTl@vsv.wcf72.mongodb.net/?retryWrites=true&w=majority";
+
+
+  const client = new MongoClient(uri);
+
+
+  await client.connect();
+  const dbName = "Leaderboard";
+  const collectionName = "Leaderboard";
+
+  const database = client.db(dbName);
+  const collection = database.collection(collectionName);
+}
+
 const colors = [
   "#3357FF", // Royal Blue
   "#E75480", // Pink
@@ -148,8 +166,8 @@ async function run_game() {
       activate_eraser();
     }
   });
-
-  for(let i=0; i<5; i++){
+  let total_score = 0
+  for (let i = 0; i < 5; i++) {
     color_list = get_random_number(4);
     // Reference image, must disappear in a bit
     g1.newGrid(5, 5);
@@ -172,9 +190,10 @@ async function run_game() {
     await viewable;
     g1.clearGrid();
     g1.updateGrid();
-    
+
     let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
     await unviewable;
+    total_score += g1.calcScore(g2);
   }
 }
 
