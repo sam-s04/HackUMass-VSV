@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb");
+import { MongoClient } from "mongodb";
 
 async function run() {
     const uri =
@@ -9,7 +9,6 @@ async function run() {
 
 
     await client.connect();
-
     const dbName = "Leaderboard";
     const collectionName = "Leaderboard";
 
