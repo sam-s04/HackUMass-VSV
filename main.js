@@ -149,7 +149,7 @@ async function run_game() {
   const g1_cells = Array.from(document.getElementsByClassName("g1"));
   const g2_cells = Array.from(document.getElementsByClassName("g2"));
 
-  const difficulties = [0, 2, 1, 0]
+  const difficulties = [5, 2, 1, 0]
 
   let total_score = 0
   for (let i = 0; i < 4; i++) {
