@@ -27,13 +27,13 @@ const get_random_number = (count) => {
 }
 
 let color_list = get_random_number(4);
-console.log(color_list);
 
 let g1 = new Grid(1);
 let g2 = new Grid(2);
 
 const grid_element1 = document.getElementById('grid1');
 const grid_element2 = document.getElementById('grid2');
+const score = document.getElementById('score');
 
 // Reference image, must disappear in a bit
 g1.newGrid(5, 5);
@@ -133,6 +133,7 @@ async function run_game() {
   input.style.visibility = 'hidden';
   button.disabled = true;
   input.disabled = true;
+  score.style.visibility = 'visible';
 
   document.getElementById('score').innerHTML = "<h2>Score: 0 </h2>";
   // Reference image, must disappear in a bit
@@ -170,13 +171,12 @@ async function run_game() {
     let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
     await unviewable;
     total_score += g2.calcScore(copyGrid);
-    document.getElementById('score').innerHTML = `<h2>Score: ${total_score}</h2>`;
+    score.innerHTML = `<h2>Score: ${total_score}</h2>`;
   }
 }
 
 function setup_palette() {
   for (let i in color_circle_list) {
-    console.log(color_list[i])
     color_circle_list[i].style.visibility = "visible";
     color_circle_list[i].style.backgroundColor = color_list[i];
   }

@@ -130,6 +130,7 @@ h1 {
 }
 
 #score {
+    visibility: hidden;
     margin-left: 75px;
 }
 
