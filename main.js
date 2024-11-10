@@ -127,6 +127,7 @@ function run_game() {
     console.log(color_list[i])
     color_circle_list[i].style.backgroundColor = color_list[i];
   }
+  eraser.style.visibility = "visible";
 
   color_circle_list.forEach(circ => {
     circ.addEventListener("click", () => set_paintbrush(circ, circ.style.backgroundColor));

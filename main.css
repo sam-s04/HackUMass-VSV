@@ -87,6 +87,7 @@ h1 {
     background-image: url("eraser.png");
     background-position: center;
     background-size: 85%;
+    visibility: hidden;
 }
 
 .grid-class {
