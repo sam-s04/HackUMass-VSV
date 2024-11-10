@@ -7,6 +7,10 @@ class Leaderboard {
     return this.board;
   }
 
+  addToLeaderboard(item){
+    this.board.push(item);
+  }
+
   async saveScore(name, score) {
     this.board.push((name, score));
     try {
@@ -29,6 +33,12 @@ class Leaderboard {
   }
 
   async editScore(name, score) {
+    for(item of this.board){
+      if(item[0] === name){
+        item[1] = score;
+        break;
+      }
+    }
     try {
       await fetch(`/edit?name=${name}&score=${score}`, { method: 'PUT' });
     }
