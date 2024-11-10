@@ -103,12 +103,6 @@ function activate_pixels() {
   });
 }
 
-button.addEventListener('click', () => {
-  console.log('button clicked lolol');
-  run_game();
-
-})
-
 function run_game() {
   // 5 times, do:
   // render both grids, first one being the reference
@@ -150,11 +144,14 @@ function run_game() {
 
   setTimeout(() => { 
     g1.clearGrid();
-    console.log(g1);
-    g1.updateGrid(); 
-  }, 100);
+    g1.updateGrid();
+  }, 10000);
+  setTimeout(() => {
+
+  })
 }
 
 button.addEventListener('click', () => {
   run_game();
+  setTimeout(() => {run_game()}, 15000);
 })

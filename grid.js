@@ -15,11 +15,7 @@ export class Grid {
   }
 
   clearGrid() {
-    for (const i = 0; i < this.grid.height; i++) {
-      for (const j = 0; j < this.grid.width; j++) {
-        this.grid[i][j] = 'ffffff';
-      }
-    }
+    this.grid = this.grid.map(row => row.map(x => 'ffffff'))
   }
 
   newGrid(height, width) {
