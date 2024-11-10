@@ -101,6 +101,18 @@ function activate_pixels() {
   });
 }
 
+function generatePermutation(n) {
+  const arr = 
+  Array.from({ length: n + 1 }, (_, i) => i);
+  
+  for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+  }
+  
+  return arr;
+}
+
 async function run_game() {
   // 5 times, do:
   // render both grids, first one being the reference
@@ -120,6 +132,39 @@ async function run_game() {
   g1.setup(grid_element1);
   g2.setup(grid_element2);
 
+  let total_score = 0
+  for (let i = 0; i < 5; i++) {
+    color_list = get_random_number(4);
+    // Reference image, must disappear in a bit
+    g1.newGrid(5, 5);
+    // User paint image
+    g2.newGrid(5, 5);
+
+    g1.randomizeGrid(color_list, 2);
+    g1.updateGrid();
+    g2.updateGrid();
+    g1.setup(grid_element1);
+    g2.setup(grid_element2);
+
+    for (let i in color_circle_list) {
+      color_circle_list[i].style.backgroundColor = color_list[i];
+    }
+
+    activate_pixels();
+
+    let viewable = new Promise(resolve => setTimeout(resolve, 10000)); // time the painting is visible
+    await viewable;
+    
+    g1.clearGrid();
+    g1.updateGrid();
+
+    let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
+    await unviewable;
+    total_score += g1.calcScore(g2);
+  }
+}
+
+function setup_palette() {
   for (let i in color_circle_list) {
     console.log(color_list[i])
     color_circle_list[i].style.visibility = "visible";
@@ -154,37 +199,9 @@ async function run_game() {
       activate_eraser();
     }
   });
-  let total_score = 0
-  for (let i = 0; i < 5; i++) {
-    color_list = get_random_number(4);
-    // Reference image, must disappear in a bit
-    g1.newGrid(5, 5);
-    // User paint image
-    g2.newGrid(5, 5);
-
-    g1.randomizeGrid(color_list, 2);
-    g1.updateGrid();
-    g2.updateGrid();
-    g1.setup(grid_element1);
-    g2.setup(grid_element2);
-
-    for (let i in color_circle_list) {
-      color_circle_list[i].style.backgroundColor = color_list[i];
-    }
-
-    activate_pixels();
-
-    let viewable = new Promise(resolve => setTimeout(resolve, 10000)); // time the painting is visible
-    await viewable;
-    g1.clearGrid();
-    g1.updateGrid();
-
-    let unviewable = new Promise(resolve => setTimeout(resolve, 5000)); // time the user can draw with no painting visible
-    await unviewable;
-    total_score += g1.calcScore(g2);
-  }
 }
 
 button.addEventListener('click', () => {
+  setup_palette()
   run_game();
 })
